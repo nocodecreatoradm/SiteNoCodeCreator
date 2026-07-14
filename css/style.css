@@ -696,9 +696,6 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
   .nav-mobile { display: flex; }
 }
 
-@media (max-width: 520px) {
-  .nav__brandname { display: none; }
-}
 
 /* Tighter rhythm + lighter hero visual on small screens so there's less to scroll through */
 @media (max-width: 640px) {
