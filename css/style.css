@@ -621,7 +621,6 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; padding-top: 48px; }
-  .hero__art { order: -1; }
   .about__inner { grid-template-columns: 1fr; }
   .about__photo { max-width: 280px; margin: 0 auto; }
   .contact-card { grid-template-columns: 1fr; padding: 36px 6vw; }
@@ -632,4 +631,40 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
 @media (max-width: 520px) {
   .nav__brandname { display: none; }
   .nav__links { width: 100%; justify-content: center; }
+}
+
+/* Tighter rhythm + lighter hero visual on small screens so there's less to scroll through */
+@media (max-width: 640px) {
+  .hero { padding-top: 28px; padding-bottom: 36px; gap: 36px; }
+  .hero__art { max-width: 320px; margin: 0 auto; }
+  .mockup { padding: 22px; }
+  .mockup__body { padding: 20px 18px 22px; min-height: 0; }
+  .mockup__skel-row { margin-bottom: 22px; }
+
+  .section, .about { padding-top: 56px; padding-bottom: 56px; }
+  .section--alt { padding-top: 56px; padding-bottom: 56px; }
+  .section__head { margin-bottom: 36px; }
+
+  .hero__stats { gap: 22px; margin-top: 32px; flex-wrap: wrap; }
+
+  /* Horizontal, swipeable carousels instead of long vertical stacks */
+  .grid--services,
+  .grid--portfolio {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -6vw;
+    padding: 4px 6vw 10px;
+  }
+  .grid--services::-webkit-scrollbar,
+  .grid--portfolio::-webkit-scrollbar { display: none; }
+  .grid--services .card--service,
+  .grid--portfolio .card--brand {
+    flex: 0 0 78%;
+    max-width: 78%;
+    scroll-snap-align: start;
+  }
 }
