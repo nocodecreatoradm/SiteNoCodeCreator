@@ -66,4 +66,25 @@
     }, { passive: true });
     updateParallax();
   }
+
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('navMobile');
+  if (burger && mobileMenu) {
+    const closeMenu = () => {
+      mobileMenu.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+    };
+    burger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', String(isOpen));
+    });
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.classList.contains('is-open')) return;
+      if (mobileMenu.contains(e.target) || burger.contains(e.target)) return;
+      closeMenu();
+    });
+  }
 })();

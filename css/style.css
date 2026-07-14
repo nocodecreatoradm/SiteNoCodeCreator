@@ -219,6 +219,75 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
 }
 .nav__links a:not(.btn):hover { color: var(--blue); }
 
+/* Hamburger (mobile only) */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.nav__burger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--navy);
+  transition: transform .25s ease, opacity .2s ease;
+}
+.nav__burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav__burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile dropdown menu */
+.nav-mobile {
+  z-index: 49;
+  display: none;
+  flex-direction: column;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 16px 24px -18px rgba(0, 0, 0, .3);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s ease;
+}
+.nav-mobile.is-open { max-height: 320px; }
+.nav-mobile a {
+  padding: 16px 6vw;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-heading);
+  border-bottom: 1px solid var(--border);
+}
+.nav-mobile a:last-child { border-bottom: none; }
+
+/* Floating WhatsApp button */
+.fab-wa {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: oklch(0.6 0.16 150);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px -6px oklch(0.5 0.16 150 / 0.6);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.fab-wa:hover { color: #fff; transform: scale(1.08); box-shadow: 0 14px 28px -6px oklch(0.5 0.16 150 / 0.7); }
+.fab-wa:active { transform: scale(0.96); }
+
 /* ---------- Hero ---------- */
 .hero {
   padding: 96px 6vw 88px;
@@ -622,13 +691,13 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
   .hero { grid-template-columns: 1fr; padding-top: 48px; }
   .about__inner { grid-template-columns: 1fr; }
   .contact-card { grid-template-columns: 1fr; padding: 36px 6vw; }
-  .nav { flex-wrap: wrap; row-gap: 12px; }
-  .nav__links { gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+  .nav__links { display: none; }
+  .nav__burger { display: flex; }
+  .nav-mobile { display: flex; }
 }
 
 @media (max-width: 520px) {
   .nav__brandname { display: none; }
-  .nav__links { width: 100%; justify-content: center; }
 }
 
 /* Tighter rhythm + lighter hero visual on small screens so there's less to scroll through */
