@@ -69,12 +69,16 @@
 
   const burger = document.getElementById('navBurger');
   const mobileMenu = document.getElementById('navMobile');
+  const navHeader = document.querySelector('.nav');
   if (burger && mobileMenu) {
     const closeMenu = () => {
       mobileMenu.classList.remove('is-open');
       burger.setAttribute('aria-expanded', 'false');
     };
     burger.addEventListener('click', () => {
+      if (navHeader) {
+        mobileMenu.style.top = navHeader.getBoundingClientRect().height + 'px';
+      }
       const isOpen = mobileMenu.classList.toggle('is-open');
       burger.setAttribute('aria-expanded', String(isOpen));
     });

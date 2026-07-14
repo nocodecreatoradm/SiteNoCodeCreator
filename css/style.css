@@ -248,6 +248,9 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
 
 /* Mobile dropdown menu */
 .nav-mobile {
+  position: fixed;
+  left: 0;
+  right: 0;
   z-index: 49;
   display: none;
   flex-direction: column;
