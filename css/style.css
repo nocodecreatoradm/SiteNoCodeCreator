@@ -366,7 +366,7 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
   border-radius: 999px;
   background: oklch(0.88 0.01 260);
 }
-.mockup__body { padding: 30px 26px 34px; min-height: 260px; }
+.mockup__body { padding: 30px 26px 34px; }
 
 .mockup__nav-row {
   display: flex; align-items: center; gap: 16px;
@@ -391,23 +391,13 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
   border-radius: 999px;
 }
 
-.mockup__content { display: flex; flex-direction: column; align-items: flex-start; }
-.mockup__heading {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 24px;
-  line-height: 1.15;
-  font-weight: 700;
-  color: var(--text-heading);
-  margin: 0 0 10px;
-}
-.mockup__sub { font-size: 13px; color: var(--text-body); margin: 0 0 18px; }
-.mockup__cta {
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  background: var(--blue);
-  padding: 10px 20px;
-  border-radius: 9px;
+.mockup__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  background: oklch(0.94 0.01 260);
 }
 
 /* ---------- Sections (shared) ---------- */
@@ -723,7 +713,7 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
   .hero { padding-top: 28px; padding-bottom: 36px; gap: 36px; }
   .hero__art { max-width: 320px; margin: 0 auto; }
   .mockup { padding: 22px; }
-  .mockup__body { padding: 20px 18px 22px; min-height: 0; }
+  .mockup__body { padding: 20px 18px 22px; }
   .mockup__nav-row { margin-bottom: 20px; }
   .mockup__heading { font-size: 20px; }
 
