@@ -67,6 +67,11 @@
     updateParallax();
   }
 
+  const heroVideo = document.querySelector('.mockup__video');
+  if (heroVideo && !reduceMotion) {
+    heroVideo.play().catch(() => {});
+  }
+
   const burger = document.getElementById('navBurger');
   const mobileMenu = document.getElementById('navMobile');
   const navHeader = document.querySelector('.nav');
