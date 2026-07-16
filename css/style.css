@@ -640,7 +640,7 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; padding-top: 48px; }
+  .hero__copy { padding-top: 48px; }
   .about__inner { grid-template-columns: 1fr; }
   .contact-card { grid-template-columns: 1fr; padding: 36px 6vw; }
   .nav__links { display: none; }
@@ -649,13 +649,10 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
 }
 
 
-/* Tighter rhythm + lighter hero visual on small screens so there's less to scroll through */
+/* Tighter rhythm + fuller overlay coverage on small screens so wrapped text stays legible */
 @media (max-width: 640px) {
-  .hero { padding-top: 28px; padding-bottom: 36px; gap: 36px; }
-  .hero__art { max-width: 320px; margin: 0 auto; }
-  .mockup { padding: 22px; }
-  .mockup__body { padding: 20px 18px 22px; }
-  .mockup__nav-row { margin-bottom: 20px; }
+  .hero__copy { padding-top: 28px; padding-bottom: 36px; }
+  .hero__overlay { background: linear-gradient(180deg, rgba(10,6,30,0.55) 0%, rgba(10,6,30,0.88) 55%, rgba(10,6,30,0.88) 100%); }
 
   .section, .about { padding-top: 56px; padding-bottom: 56px; }
   .section--alt { padding-top: 56px; padding-bottom: 56px; }
