@@ -1,7 +1,7 @@
 (function () {
   const WHATSAPP_NUMBER = '51908844210';
   const WHATSAPP_DISPLAY = '+51 908 844 210';
-  const EMAIL = 'no.code.creator.adm@gmail.com';
+  const EMAIL = 'hola@nocodecreatoria.com';
   const WHATSAPP_MESSAGE = 'Hola, vi tu página de NoCode Creator y quiero cotizar un proyecto.';
 
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
