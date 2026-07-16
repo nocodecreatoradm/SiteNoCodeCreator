@@ -715,7 +715,6 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
   .mockup { padding: 22px; }
   .mockup__body { padding: 20px 18px 22px; }
   .mockup__nav-row { margin-bottom: 20px; }
-  .mockup__heading { font-size: 20px; }
 
   .section, .about { padding-top: 56px; padding-bottom: 56px; }
   .section--alt { padding-top: 56px; padding-bottom: 56px; }
