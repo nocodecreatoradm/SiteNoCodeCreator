@@ -67,7 +67,7 @@
     updateParallax();
   }
 
-  const heroVideo = document.querySelector('.mockup__video');
+  const heroVideo = document.querySelector('.hero__video');
   if (heroVideo && !reduceMotion) {
     heroVideo.play().catch(() => {});
   }
