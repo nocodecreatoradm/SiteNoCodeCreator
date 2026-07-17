@@ -39,10 +39,37 @@
 
   const form = document.getElementById('contactForm');
   const success = document.getElementById('contactSuccess');
-  if (form && success) {
+  const error = document.getElementById('contactError');
+  if (form && success && error) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    const submitButtonDefaultText = submitButton.textContent;
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      success.hidden = false;
+      success.hidden = true;
+      error.hidden = true;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando...';
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          submitButton.disabled = false;
+          submitButton.textContent = submitButtonDefaultText;
+          if (data.success) {
+            success.hidden = false;
+            form.reset();
+          } else {
+            error.hidden = false;
+          }
+        })
+        .catch(() => {
+          submitButton.disabled = false;
+          submitButton.textContent = submitButtonDefaultText;
+          error.hidden = false;
+        });
     });
   }
 
