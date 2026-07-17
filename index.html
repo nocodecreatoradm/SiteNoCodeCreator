@@ -295,15 +295,18 @@
         </a>
       </div>
       <form class="contact-form" id="contactForm">
-        <input type="text" placeholder="Tu nombre" required>
-        <input type="email" placeholder="Tu email" required>
-        <textarea placeholder="Cuéntanos sobre tu proyecto..." rows="4" required></textarea>
+        <input type="hidden" name="access_key" value="c0b410bf-a28e-4f6f-aa36-bbae5e3a9c30">
+        <input type="checkbox" name="botcheck" class="contact-form__botcheck" tabindex="-1" autocomplete="off">
+        <input type="text" name="name" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu email" required>
+        <textarea name="message" placeholder="Cuéntanos sobre tu proyecto..." rows="4" required></textarea>
         <label class="contact-form__consent">
           <input type="checkbox" required>
           <span>Acepto que mis datos se usen solo para responder mi consulta, según la <a href="privacidad.html">Política de Privacidad</a>.</span>
         </label>
         <button type="submit">Enviar mensaje</button>
-        <p class="contact-form__success" id="contactSuccess" hidden>¡Gracias! Este formulario es una demo — por ahora escríbenos directo por WhatsApp o email.</p>
+        <p class="contact-form__success" id="contactSuccess" hidden>¡Gracias! Tu mensaje fue enviado — te responderemos pronto.</p>
+        <p class="contact-form__error" id="contactError" hidden>No pudimos enviar tu mensaje. Escríbenos directo por WhatsApp mientras lo resolvemos.</p>
       </form>
     </div>
   </section>
