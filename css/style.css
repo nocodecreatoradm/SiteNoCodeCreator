@@ -120,6 +120,9 @@ a:hover { color: var(--blue-dark); }
   .bg-scene__layer { transform: none !important; }
   [data-reveal] { transform: none; transition: opacity .3s ease; }
   .hero__stats .stat { animation: none; opacity: 1; }
+  [data-reveal] .card--service,
+  [data-reveal] .card--brand,
+  [data-reveal] .card--pricing { transform: none; transition: opacity .3s ease; }
 }
 ::selection { background: oklch(0.85 0.08 300); }
 
@@ -440,12 +443,6 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
 [data-reveal] .card--brand:nth-child(5) { transition-delay: 240ms; }
 [data-reveal] .card--service:nth-child(6) { transition-delay: 300ms; }
 [data-reveal] .card--service:nth-child(7) { transition-delay: 360ms; }
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] .card--service,
-  [data-reveal] .card--brand,
-  [data-reveal] .card--pricing { transform: none; transition: opacity .3s ease; }
-}
 
 /* ---------- Grids & Cards ---------- */
 .grid { display: grid; gap: 22px; }
