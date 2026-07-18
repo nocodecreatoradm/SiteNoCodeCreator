@@ -95,6 +95,7 @@
         field.classList.add('is-shaking');
         field.addEventListener('animationend', () => field.classList.remove('is-shaking'), { once: true });
       });
+      field.addEventListener('input', () => field.classList.remove('is-shaking'));
     });
   }
 
