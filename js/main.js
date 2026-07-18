@@ -89,6 +89,15 @@
     });
   }
 
+  if (form) {
+    form.querySelectorAll('[required]').forEach((field) => {
+      field.addEventListener('invalid', () => {
+        field.classList.add('is-shaking');
+        field.addEventListener('animationend', () => field.classList.remove('is-shaking'), { once: true });
+      });
+    });
+  }
+
   const parallaxLayers = document.querySelectorAll('.bg-scene__layer');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (parallaxLayers.length && !reduceMotion) {
