@@ -572,7 +572,7 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .faq-item summary::after,
-  .faq-item__content { transition: none; }
+  .faq-item__content { transition-duration: 1ms; }
 }
 
 /* ---------- Contact ---------- */
