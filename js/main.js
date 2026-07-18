@@ -37,6 +37,22 @@
     revealTargets.forEach((el) => el.classList.add('is-visible'));
   }
 
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach((item) => {
+    const summary = item.querySelector('summary');
+    const content = item.querySelector('.faq-item__content');
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (item.classList.contains('is-open')) {
+        item.classList.remove('is-open');
+        content.addEventListener('transitionend', () => { item.open = false; }, { once: true });
+      } else {
+        item.open = true;
+        requestAnimationFrame(() => item.classList.add('is-open'));
+      }
+    });
+  });
+
   const form = document.getElementById('contactForm');
   const success = document.getElementById('contactSuccess');
   const error = document.getElementById('contactError');
