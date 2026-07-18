@@ -411,6 +411,42 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
   transform: translateY(0);
 }
 
+/* Card entrance stagger (services/portfolio/pricing grids) */
+[data-reveal] .card--service,
+[data-reveal] .card--brand,
+[data-reveal] .card--pricing {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .5s var(--ease-out), transform .5s var(--ease-out);
+}
+[data-reveal].is-visible .card--service,
+[data-reveal].is-visible .card--brand,
+[data-reveal].is-visible .card--pricing {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal] .card--service:nth-child(1),
+[data-reveal] .card--brand:nth-child(1),
+[data-reveal] .card--pricing:nth-child(1) { transition-delay: 0ms; }
+[data-reveal] .card--service:nth-child(2),
+[data-reveal] .card--brand:nth-child(2),
+[data-reveal] .card--pricing:nth-child(2) { transition-delay: 60ms; }
+[data-reveal] .card--service:nth-child(3),
+[data-reveal] .card--brand:nth-child(3),
+[data-reveal] .card--pricing:nth-child(3) { transition-delay: 120ms; }
+[data-reveal] .card--service:nth-child(4),
+[data-reveal] .card--brand:nth-child(4) { transition-delay: 180ms; }
+[data-reveal] .card--service:nth-child(5),
+[data-reveal] .card--brand:nth-child(5) { transition-delay: 240ms; }
+[data-reveal] .card--service:nth-child(6) { transition-delay: 300ms; }
+[data-reveal] .card--service:nth-child(7) { transition-delay: 360ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] .card--service,
+  [data-reveal] .card--brand,
+  [data-reveal] .card--pricing { transform: none; transition: opacity .3s ease; }
+}
+
 /* ---------- Grids & Cards ---------- */
 .grid { display: grid; gap: 22px; }
 .grid--services {
