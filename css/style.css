@@ -544,7 +544,68 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
   .card--pricing:hover { transform: translateY(-6px); box-shadow: 0 18px 36px -20px var(--shadow-navy); }
 }
 .card--pricing h3 { font-size: 19px; font-weight: 600; color: var(--text-heading); margin: 0; }
-.card--pricing p { font-size: 14px; color: var(--text-body); line-height: 1.55; margin: 0; flex: 1; }
+.card--pricing p { font-size: 14px; color: var(--text-body); line-height: 1.55; margin: 0; }
+
+/* Featured pricing card */
+.card--pricing-featured {
+  border-color: var(--blue);
+  border-width: 2px;
+  position: relative;
+}
+.pricing__badge {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  background: var(--blue); color: #fff;
+  font-family: var(--font-head); font-weight: 600;
+  font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 3px 14px; border-radius: 20px; white-space: nowrap;
+}
+
+/* Price block */
+.pricing__price {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 12px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.pricing__from {
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.07em; color: var(--text-muted);
+}
+.pricing__amount {
+  font-family: var(--font-head); font-weight: 700; font-size: 28px;
+  color: var(--text-heading); line-height: 1.1;
+}
+.pricing__range { font-size: 12px; color: var(--text-muted); }
+
+/* Feature list */
+.pricing__includes {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 8px; flex: 1;
+}
+.pricing__includes li {
+  font-size: 13px; color: var(--text-body); padding-left: 20px;
+  position: relative; line-height: 1.4;
+}
+.pricing__includes li::before {
+  content: '';
+  position: absolute; left: 0; top: 5px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: oklch(0.65 0.16 150 / 0.2);
+  border: 1.5px solid oklch(0.65 0.16 150);
+  display: flex; align-items: center; justify-content: center;
+}
+.pricing__includes li::after {
+  content: '';
+  position: absolute; left: 3px; top: 8px;
+  width: 6px; height: 4px;
+  border-left: 1.5px solid oklch(0.65 0.16 150);
+  border-bottom: 1.5px solid oklch(0.65 0.16 150);
+  transform: rotate(-45deg) translateY(-1px);
+}
+
+/* Pricing footnote */
+.pricing__note {
+  text-align: center; font-size: 13px; color: var(--text-muted);
+  margin-top: 24px; line-height: 1.55;
+}
 
 .testimonial-empty {
   max-width: 520px;
