@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 
@@ -101,74 +101,58 @@
   </section>
 
   <!-- BENEFICIOS -->
-  <section id="beneficios" class="section" data-reveal>
+  <section id="beneficios" class="section section--benefits" data-reveal>
     <div class="section__head">
       <div class="eyebrow">Por qué elegirnos</div>
-      <h2>Tu negocio crece. Tú recuperas tu tiempo.</h2>
-      <p>No vendemos código. Vendemos resultados: menos horas perdidas en tecnología, más control sobre tu operación y herramientas que crecen contigo.</p>
+      <h2>Tu negocio crece.<br>Tú recuperas tu tiempo.</h2>
     </div>
-    <div class="grid grid--benefits">
 
-      <div class="card card--benefit">
-        <div class="benefit__img">
-          <img src="assets/benefits/b01-mas-tiempo.jpg" alt="Empresario disfrutando tiempo libre gracias a la automatización" loading="lazy" width="1200" height="675">
-        </div>
-        <div class="benefit__body">
-          <h3>⏱ Más tiempo para tu negocio</h3>
-          <p>Automatizamos lo repetitivo para que tú y tu equipo se enfoquen en crecer, vender y atender — no en administrar tecnología.</p>
-        </div>
+    <!-- Fila destacada 1: texto izquierda, imagen derecha -->
+    <div class="benefit-split">
+      <div class="benefit-split__text">
+        <p class="benefit-split__label">⏱ Recupera tu tiempo</p>
+        <h3>Automatiza lo repetitivo.<br>Enfócate en crecer.</h3>
+        <p>Tu equipo hace lo que importa mientras la tecnología trabaja por ti — sin perder horas en tareas que una herramienta puede hacer mejor.</p>
       </div>
-
-      <div class="card card--benefit">
-        <div class="benefit__img">
-          <img src="assets/benefits/b02-mayor-seguridad.jpg" alt="Escudo de protección digital para tu negocio" loading="lazy" width="1200" height="675">
-        </div>
-        <div class="benefit__body">
-          <h3>🔒 Mayor seguridad para tu inversión</h3>
-          <p>Plataformas modernas con acceso controlado, backups y código que no se rompe de un día para otro. Lo que construimos, dura.</p>
-        </div>
+      <div class="benefit-split__visual">
+        <img src="assets/benefits/b01-mas-tiempo.jpg" alt="Empresario con más tiempo para su negocio" loading="lazy">
       </div>
+    </div>
 
-      <div class="card card--benefit">
-        <div class="benefit__img">
-          <img src="assets/benefits/b03-escalable.jpg" alt="Dashboard con métricas de crecimiento de negocio" loading="lazy" width="1200" height="675">
-        </div>
-        <div class="benefit__body">
-          <h3>📈 Escalable desde el primer día</h3>
-          <p>Construimos pensando en lo que tu negocio va a ser, no solo en lo que es hoy. Añades funciones cuando las necesitas, sin rehacer todo.</p>
-        </div>
+    <!-- Fila destacada 2: imagen izquierda, texto derecha -->
+    <div class="benefit-split benefit-split--flip">
+      <div class="benefit-split__text">
+        <p class="benefit-split__label">🚀 Lanza antes que tu competencia</p>
+        <h3>Tu producto en semanas,<br>no en meses.</h3>
+        <p>Mientras otros esperan a una agencia tradicional, tu negocio ya está funcionando y captando clientes. La velocidad es tu ventaja.</p>
       </div>
-
-      <div class="card card--benefit">
-        <div class="benefit__img">
-          <img src="assets/benefits/b04-control-total.jpg" alt="Panel de control de aplicación web en manos del cliente" loading="lazy" width="1200" height="675">
-        </div>
-        <div class="benefit__body">
-          <h3>📊 Seguimiento y control en tus manos</h3>
-          <p>Panel propio, reportes claros, accesos para tu equipo. No dependes de nosotros para operar tu herramienta.</p>
-        </div>
+      <div class="benefit-split__visual">
+        <img src="assets/benefits/b05-lanza-antes.jpg" alt="Lanzamiento de producto digital rápido" loading="lazy">
       </div>
+    </div>
 
-      <div class="card card--benefit">
-        <div class="benefit__img">
-          <img src="assets/benefits/b05-lanza-antes.jpg" alt="Lanzamiento de producto digital veloz y moderno" loading="lazy" width="1200" height="675">
-        </div>
-        <div class="benefit__body">
-          <h3>🚀 Lanzas antes que tu competencia</h3>
-          <p>Mientras otros esperan meses por una agencia, tu producto ya está funcionando. La velocidad es tu ventaja competitiva.</p>
-        </div>
+    <!-- Grid secundario: 4 beneficios sin imagen -->
+    <div class="benefits-secondary">
+      <div class="benefit-item">
+        <span class="benefit-item__icon">🔒</span>
+        <h4>Mayor seguridad</h4>
+        <p>Plataformas con acceso controlado y backups. Lo que construimos, dura.</p>
       </div>
-
-      <div class="card card--benefit">
-        <div class="benefit__img">
-          <img src="assets/benefits/b06-acompanamiento.jpg" alt="Asesoría personalizada post-entrega del proyecto" loading="lazy" width="1200" height="675">
-        </div>
-        <div class="benefit__body">
-          <h3>🤝 Acompañamiento real post-entrega</h3>
-          <p>Soporte activo los primeros 30 días. Sabes exactamente a quién escribirle si algo pasa — no un ticket anónimo.</p>
-        </div>
+      <div class="benefit-item">
+        <span class="benefit-item__icon">📈</span>
+        <h4>Escalable desde el día 1</h4>
+        <p>Añades funciones cuando tu negocio crece, sin rehacer todo desde cero.</p>
       </div>
-
+      <div class="benefit-item">
+        <span class="benefit-item__icon">📊</span>
+        <h4>Control total</h4>
+        <p>Panel propio, reportes claros. No dependes de nosotros para operar.</p>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-item__icon">🤝</span>
+        <h4>Acompañamiento real</h4>
+        <p>Soporte activo los primeros 30 días. Siempre sabes a quién escribirle.</p>
+      </div>
     </div>
   </section>
 
