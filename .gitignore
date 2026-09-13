@@ -2,3 +2,6 @@
 Thumbs.db
 *.log
 .superpowers/
+# Large PNG originals (optimized JPGs used instead)
+assets/benefits/*.png
+assets/services/*.png
