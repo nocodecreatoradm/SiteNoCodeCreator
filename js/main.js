@@ -1,6 +1,6 @@
 (function () {
-  const WHATSAPP_NUMBER = '51960560064';
-  const WHATSAPP_DISPLAY = '+51 960 560 064';
+  const WHATSAPP_NUMBER = '51924423629';
+  const WHATSAPP_DISPLAY = '+51 924 423 629';
   const EMAIL = 'hola@nocodecreatoria.com';
   const WHATSAPP_MESSAGE = 'Hola, vi tu página de NoCode Creator y quiero cotizar un proyecto.';
 
