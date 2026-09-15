@@ -595,30 +595,55 @@ details.faq-q .faq-a p{font-size:15px;color:var(--ink-60);line-height:1.75}
   .nav{padding:0 20px}
   .nav__links{display:none}
   .nav__burger{display:flex}
-  .feature{grid-template-columns:1fr;padding:56px 20px;gap:36px}
+  /* Features: menos padding y sin invertir orden en móvil */
+  .feature{grid-template-columns:1fr;padding:40px 20px;gap:28px}
   .feature--flip .feature__text,.feature--flip .feature__visual{order:unset}
+  /* Secciones compactas en móvil */
   .services__inner,.process__inner,.portfolio__inner,
-  .pricing__inner,.about__inner,.faq__inner,
-  .contact__inner,.final,.section{padding:64px 20px}
+  .pricing__inner,.faq__inner,.section{padding:48px 20px}
+  /* About y contacto aún más compactos */
+  .about__inner{padding:40px 20px}
+  .contact__inner{padding:40px 20px}
+  .final{padding:72px 20px}
+  /* Grids → 1 columna */
   .services__list{grid-template-columns:1fr}
   .svc--wide{grid-column:auto}
-  .process__steps{grid-template-columns:1fr 1fr;gap:32px}
+  .process__steps{grid-template-columns:1fr 1fr;gap:24px}
   .process__steps::before{display:none}
   .pricing__grid{grid-template-columns:1fr}
   .about__inner{grid-template-columns:1fr}
-  .about__photo{aspect-ratio:3/2}
+  /* Foto de about más pequeña en móvil */
+  .about__photo{aspect-ratio:4/3;max-height:260px}
   .contact__inner{grid-template-columns:1fr}
-  .trust{gap:20px;padding:14px 20px}
+  /* Trust bar compacto */
+  .trust{gap:16px;padding:12px 20px;flex-wrap:wrap;justify-content:flex-start}
   .trust__sep{display:none}
-  .footer{flex-direction:column;align-items:flex-start;padding:24px 20px}
-  .brands{flex-direction:column}
-  .brand{width:100%;border-right:none;flex-direction:row;gap:16px}
+  /* Footer */
+  .footer{flex-direction:column;align-items:flex-start;padding:20px}
+  /* Marcas en fila en lugar de columna */
+  .brands{display:grid;grid-template-columns:1fr 1fr}
+  .brand{width:100%;border-right:1px solid var(--border);height:88px}
+  .brand:nth-child(2n){border-right:none}
 }
 @media(max-width:560px){
-  .hero__h1{letter-spacing:-.04em}
+  /* Hero más corto para que se vea el contenido debajo */
+  .hero{height:88vh;min-height:520px}
+  .hero__h1{font-size:clamp(44px,13vw,72px);letter-spacing:-.04em}
+  .hero__sub{font-size:14px}
   .process__steps{grid-template-columns:1fr}
   .hero__ctas{flex-direction:column;width:100%}
   .btn-primary,.btn-ghost{width:100%;justify-content:center}
+  /* Servicios: padding reducido por ítem */
+  .svc{padding:22px 18px}
+  .svc__title{font-size:17px}
+  /* Precios: un plan visible bien compacto */
+  .plan{padding:24px 20px}
+  .plan__price{font-size:32px}
+  /* FAQ más compacto */
+  details.faq-q summary{padding:16px 0;font-size:15px}
+  /* Features: UI cards más pequeñas */
+  .ui-card{aspect-ratio:3/2;padding:18px}
+  .feature__h2{font-size:clamp(26px,7vw,40px)}
 }
 </style>
 </head>
