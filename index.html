@@ -127,10 +127,10 @@ ul{list-style:none}
   position:absolute;inset:0;z-index:1;
   background:linear-gradient(160deg,rgba(8,8,8,.7) 0%,rgba(8,8,8,.35) 55%,rgba(8,8,8,.8) 100%);
 }
-/* Transición suave hero → secciones */
+/* Línea de separación limpia hero → secciones */
 .hero::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;z-index:4;
-  background:linear-gradient(to bottom,transparent,#F5F5F3);
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;z-index:4;
+  background:linear-gradient(to right,transparent,var(--blue) 30%,#7B61FF 60%,transparent);
   pointer-events:none;
 }
 #hero-canvas{
@@ -785,7 +785,7 @@ details.faq-q .faq-a p{font-size:15px;color:var(--ink-60);line-height:1.75}
       <div class="svc"><span class="svc__num">03</span><div class="svc__body"><h3 class="svc__title">Automatización de procesos</h3><p class="svc__desc">Conecto tus herramientas y elimino las tareas manuales que hoy le roban horas a tu equipo.</p><a href="#contacto" class="svc__link">Cotizar →</a></div></div>
       <div class="svc"><span class="svc__num">04</span><div class="svc__body"><h3 class="svc__title">App o plataforma a medida</h3><p class="svc__desc">Login de usuarios, panel de control, flujos personalizados — construido exactamente como tu negocio lo necesita.</p><a href="#contacto" class="svc__link">Cotizar →</a></div></div>
       <div class="svc"><span class="svc__num">05</span><div class="svc__body"><h3 class="svc__title">MVP rápido</h3><p class="svc__desc">Valida que tu idea tiene mercado antes de invertir de más. Producto real, funcional, en pocas semanas.</p><a href="#contacto" class="svc__link">Cotizar →</a></div></div>
-      <div class="svc svc--wide"><span class="svc__num">06</span><div class="svc__body"><div class="svc__new">Nuevo</div><h3 class="svc__title">Agentes de IA · Tu negocio 24/7</h3><p class="svc__desc">Un asistente inteligente que atiende, responde y captura leads por ti — incluso cuando no estás. Sin salario, sin horario.</p><a href="#contacto" class="svc__link">Cotizar →</a></div></div>
+      <div class="svc"><span class="svc__num">06</span><div class="svc__body"><div class="svc__new">Nuevo</div><h3 class="svc__title">Agentes de IA · Tu negocio 24/7</h3><p class="svc__desc">Un asistente inteligente que atiende, responde y captura leads por ti — incluso cuando no estás. Sin salario, sin horario.</p><a href="#contacto" class="svc__link">Cotizar →</a></div></div>
     </div>
   </div>
 </section>
