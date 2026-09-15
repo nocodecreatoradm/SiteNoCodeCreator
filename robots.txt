@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
 
-Disallow: /aviso-legal.html
-Disallow: /privacidad.html
-
 Sitemap: https://nocodecreatoria.com/sitemap.xml
