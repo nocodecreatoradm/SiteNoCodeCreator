@@ -117,6 +117,7 @@ ul{list-style:none}
   position:relative;width:100%;height:100vh;min-height:620px;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;background:#080808;
+  contain:layout style paint;
 }
 .hero__video{
   position:absolute;inset:0;width:100%;height:100%;
@@ -126,7 +127,17 @@ ul{list-style:none}
   position:absolute;inset:0;z-index:1;
   background:linear-gradient(160deg,rgba(8,8,8,.7) 0%,rgba(8,8,8,.35) 55%,rgba(8,8,8,.8) 100%);
 }
-#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;cursor:crosshair}
+/* Transición suave hero → secciones */
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;z-index:4;
+  background:linear-gradient(to bottom,transparent,#F5F5F3);
+  pointer-events:none;
+}
+#hero-canvas{
+  position:absolute;inset:0;width:100%;height:100%;
+  z-index:2;cursor:crosshair;
+  will-change:transform;transform:translateZ(0);
+}
 .hero__inner{
   position:relative;z-index:3;text-align:center;
   padding:0 24px;display:flex;flex-direction:column;align-items:center;
@@ -190,8 +201,12 @@ ul{list-style:none}
 .section{padding:96px 40px}
 .section--border-top{border-top:1px solid var(--border)}
 
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
+.reveal{opacity:1}/* visible por defecto — animación es progressive enhancement */
+@media(prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(20px);
+    transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+}
 
 /* ─── EYEBROW ──────────────────────────────────── */
 .eyebrow{
@@ -974,60 +989,89 @@ details.faq-q .faq-a p{font-size:15px;color:var(--ink-60);line-height:1.75}
 
 <!-- ══ SCRIPTS ════════════════════════════════════ -->
 <script>
-/* Particles */
+/* ── Particles (GPU-optimised, pausable) ─────── */
 (function(){
   const c=document.getElementById('hero-canvas');
-  const ctx=c.getContext('2d');
-  let W,H,cx,cy,pts=[],mx=-9999,my=-9999;
-  const COLS=['#4285F4','#7B61FF','#06D6A0','#60A5FA','#A78BFA','#34D8F0','#818CF8','#93C5FD'];
+  const ctx=c.getContext('2d',{alpha:true,desynchronized:true});
+  let W,H,cx,cy,pts=[],mx=-9999,my=-9999,active=true,rafId=null;
+  const COLS=['#4285F4','#7B61FF','#06D6A0','#60A5FA','#A78BFA','#818CF8','#93C5FD'];
   const rand=(a,b)=>a+Math.random()*(b-a);
+
   function init(){
     W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;
     cx=W/2;cy=H*.4;pts=[];
-    const isMobile=W<768;
-  const N=isMobile?Math.min(120,Math.floor(W*.2)):Math.min(400,Math.floor(W*.3));
+    /* Límite estricto para no saturar GPU */
+    const N=W<768?80:180;
     for(let i=0;i<N;i++){
-      const a=rand(0,Math.PI*2),r=Math.random()*Math.random()*280+6;
+      const a=rand(0,Math.PI*2),r=Math.random()*Math.random()*260+8;
+      const col=COLS[i%COLS.length];
       pts.push({
-        x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r*.5,
+        x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r*.5,
         ox:cx+Math.cos(a)*r,oy:cy+Math.sin(a)*r*.5,
-        vx:0,vy:0,sz:rand(.3,2.4)*Math.random(),
-        alpha:rand(.1,.8),col:COLS[Math.floor(Math.random()*COLS.length)],
-        ph:rand(0,Math.PI*2),freq:rand(.0015,.007),amp:rand(6,36)
+        vx:0,vy:0,
+        sz:rand(.5,2.2),          /* tamaño sin shadowBlur = puro círculo */
+        alpha:rand(.25,.75),
+        col,
+        ph:rand(0,Math.PI*2),freq:rand(.002,.006),amp:rand(8,32)
       });
     }
   }
+
   function draw(){
-    requestAnimationFrame(draw);
+    if(!active){rafId=null;return;}
+    rafId=requestAnimationFrame(draw);
     ctx.clearRect(0,0,W,H);
+    /* Un solo beginPath por color — batch de fillStyle, enorme ganancia */
+    const byCol={};
     for(const p of pts){
       p.ph+=p.freq;
       const tx=p.ox+Math.sin(p.ph)*p.amp,ty=p.oy+Math.cos(p.ph*.7)*p.amp*.5;
       const dx=p.x-mx,dy=p.y-my,d2=dx*dx+dy*dy;
-      if(d2<22500){const d=Math.sqrt(d2),f=(150-d)/150*3;p.vx+=(dx/d)*f;p.vy+=(dy/d)*f}
-      p.vx+=(tx-p.x)*.025;p.vy+=(ty-p.y)*.025;
-      p.vx*=.86;p.vy*=.86;p.x+=p.vx;p.y+=p.vy;
-      ctx.save();ctx.globalAlpha=p.alpha;
-      ctx.shadowBlur=p.sz*8;ctx.shadowColor=p.col;
-      ctx.fillStyle=p.col;ctx.beginPath();ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);ctx.fill();
-      ctx.restore();
+      if(d2<14400){const d=Math.sqrt(d2),f=(120-d)/120*2.5;p.vx+=(dx/d)*f;p.vy+=(dy/d)*f}
+      p.vx+=(tx-p.x)*.022;p.vy+=(ty-p.y)*.022;
+      p.vx*=.88;p.vy*=.88;p.x+=p.vx;p.y+=p.vy;
+      /* agrupar por color para reducir cambios de estado */
+      if(!byCol[p.col])byCol[p.col]=[];
+      byCol[p.col].push(p);
     }
+    for(const col in byCol){
+      ctx.fillStyle=col;
+      for(const p of byCol[col]){
+        ctx.globalAlpha=p.alpha;  /* sin shadowBlur: 10× más rápido */
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.sz,0,6.2832);
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha=1;
   }
-  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+
+  /* Pausa automática cuando el hero sale del viewport */
+  new IntersectionObserver(entries=>{
+    active=entries[0].isIntersecting;
+    if(active&&!rafId)draw();
+  },{threshold:0}).observe(c);
+
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top},{passive:true});
   c.addEventListener('mouseleave',()=>{mx=-9999;my=-9999});
-  window.addEventListener('resize',()=>{clearTimeout(window._rz);window._rz=setTimeout(init,100)});
+  window.addEventListener('resize',()=>{clearTimeout(window._rz);window._rz=setTimeout(init,150)},{passive:true});
   init();draw();
 })();
 
-/* Nav */
+/* ── Nav (throttled, sin jank) ───────────────── */
 const nav=document.getElementById('nav');
+let _navTick=false;
 window.addEventListener('scroll',()=>{
-  const s=window.scrollY;
-  nav.classList.toggle('scrolled',s>10);
-  nav.classList.toggle('is-light',s>window.innerHeight*.8);
+  if(_navTick)return;_navTick=true;
+  requestAnimationFrame(()=>{
+    const s=window.scrollY;
+    nav.classList.toggle('scrolled',s>10);
+    nav.classList.toggle('is-light',s>window.innerHeight*.8);
+    _navTick=false;
+  });
 },{passive:true});
 
-/* Burger */
+/* ── Burger ──────────────────────────────────── */
 const burger=document.getElementById('navBurger');
 const mob=document.getElementById('navMobile');
 burger.addEventListener('click',()=>{
@@ -1036,10 +1080,10 @@ burger.addEventListener('click',()=>{
 });
 mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
 
-/* Reveal */
+/* ── Reveal (IntersectionObserver → CSS hace el trabajo) ── */
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{
-  if(e.isIntersecting)e.target.classList.add('in');
-}),{threshold:.1});
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* Feature 1: tasks */
