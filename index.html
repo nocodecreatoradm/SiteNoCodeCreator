@@ -1116,49 +1116,99 @@ const io=new IntersectionObserver(entries=>entries.forEach(e=>{
 }),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-/* Feature 1: tasks */
+/* ── Feature 1: tasks — loop continuo ─────────── */
 (function(){
-  let done=false;
-  const obs=new IntersectionObserver(entries=>{
-    if(entries[0].isIntersecting&&!done){done=true;
-      document.querySelectorAll('#v1w .ui-task').forEach(t=>{
-        setTimeout(()=>t.classList.add('done'),+t.dataset.delay+300);
-      });
-      const el=document.getElementById('v1h');
-      const t0=Date.now()+300;
-      (function tk(){const e=Date.now()-t0,h=Math.min(12,Math.floor(e/180));el.textContent=h+' h';if(h<12)requestAnimationFrame(tk)})();
-    }
-  },{threshold:.3});
-  const f=document.getElementById('f1');if(f)obs.observe(f);
+  const tasks=document.querySelectorAll('#v1w .ui-task');
+  const hoursEl=document.getElementById('v1h');
+  let loopTimer=null,running=false;
+
+  function runOnce(){
+    /* reset */
+    tasks.forEach(t=>t.classList.remove('done'));
+    if(hoursEl)hoursEl.textContent='0 h';
+    /* animar tareas una a una */
+    tasks.forEach(t=>setTimeout(()=>t.classList.add('done'),+t.dataset.delay+200));
+    /* contador de horas */
+    const t0=Date.now()+200;
+    (function tk(){
+      const h=Math.min(12,Math.floor((Date.now()-t0)/180));
+      if(hoursEl)hoursEl.textContent=h+' h';
+      if(h<12)requestAnimationFrame(tk);
+    })();
+  }
+
+  function startLoop(){
+    if(running)return;running=true;
+    runOnce();
+    loopTimer=setInterval(runOnce,5500); /* repite cada 5.5 s */
+  }
+  function stopLoop(){
+    running=false;clearInterval(loopTimer);
+  }
+
+  const f=document.getElementById('f1');
+  if(f)new IntersectionObserver(entries=>{
+    entries[0].isIntersecting?startLoop():stopLoop();
+  },{threshold:.25}).observe(f);
 })();
 
-/* Feature 3: chat */
+/* ── Feature 3: chat — loop continuo ─────────── */
 (function(){
-  let done=false;
-  const obs=new IntersectionObserver(entries=>{
-    if(entries[0].isIntersecting&&!done){done=true;
-      document.querySelectorAll('#v3w .ui-bubble').forEach(b=>{
-        setTimeout(()=>b.classList.add('show'),+b.dataset.delay+200);
-      });
-    }
-  },{threshold:.3});
-  const f=document.getElementById('f3');if(f)obs.observe(f);
+  const bubbles=document.querySelectorAll('#v3w .ui-bubble');
+  let loopTimer=null,running=false;
+
+  function runOnce(){
+    bubbles.forEach(b=>b.classList.remove('show'));
+    bubbles.forEach(b=>setTimeout(()=>b.classList.add('show'),+b.dataset.delay+100));
+  }
+
+  function startLoop(){
+    if(running)return;running=true;
+    runOnce();
+    loopTimer=setInterval(runOnce,6000); /* repite cada 6 s */
+  }
+  function stopLoop(){
+    running=false;clearInterval(loopTimer);
+  }
+
+  const f=document.getElementById('f3');
+  if(f)new IntersectionObserver(entries=>{
+    entries[0].isIntersecting?startLoop():stopLoop();
+  },{threshold:.25}).observe(f);
 })();
 
-/* Feature 4: timeline */
+/* ── Feature 4: timeline — loop continuo ─────── */
 (function(){
-  let done=false;
-  const obs=new IntersectionObserver(entries=>{
-    if(entries[0].isIntersecting&&!done){done=true;
-      document.querySelectorAll('#v4w .ui-tl-step').forEach(s=>{
-        setTimeout(()=>{
-          s.classList.add('done');
-          setTimeout(()=>{const b=s.querySelector('.ui-tl-bar-fill');if(b)b.style.width='100%'},50);
-        },+s.dataset.delay+300);
-      });
-    }
-  },{threshold:.3});
-  const f=document.getElementById('f4');if(f)obs.observe(f);
+  const steps=document.querySelectorAll('#v4w .ui-tl-step');
+  let loopTimer=null,running=false;
+
+  function runOnce(){
+    /* reset */
+    steps.forEach(s=>{
+      s.classList.remove('done');
+      const b=s.querySelector('.ui-tl-bar-fill');
+      if(b)b.style.width='0';
+    });
+    /* animar paso a paso */
+    steps.forEach(s=>setTimeout(()=>{
+      s.classList.add('done');
+      setTimeout(()=>{const b=s.querySelector('.ui-tl-bar-fill');if(b)b.style.width='100%'},50);
+    },+s.dataset.delay+200));
+  }
+
+  function startLoop(){
+    if(running)return;running=true;
+    runOnce();
+    loopTimer=setInterval(runOnce,5000); /* repite cada 5 s */
+  }
+  function stopLoop(){
+    running=false;clearInterval(loopTimer);
+  }
+
+  const f=document.getElementById('f4');
+  if(f)new IntersectionObserver(entries=>{
+    entries[0].isIntersecting?startLoop():stopLoop();
+  },{threshold:.25}).observe(f);
 })();
 
 /* Contact form */
