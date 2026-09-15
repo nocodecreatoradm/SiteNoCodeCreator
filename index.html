@@ -450,6 +450,13 @@ ul{list-style:none}
 .pricing__note{text-align:center;margin-top:20px;font-size:13px;color:var(--ink-30)}
 
 /* ─── SOBRE NOSOTROS ────────────────────────────── */
+.team-pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
+.team-pillar{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:22px 18px;display:flex;flex-direction:column;gap:8px}
+.team-pillar:first-child{grid-column:1/-1}
+.team-pillar__icon{width:38px;height:38px;background:var(--blue-dim);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:2px}
+.team-pillar__icon svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.team-pillar__title{font-size:14px;font-weight:700;color:var(--ink)}
+.team-pillar__desc{font-size:13px;color:var(--ink-60);line-height:1.55}
 .about{
   background:var(--bg-alt);border-top:1px solid var(--border);
 }
@@ -612,8 +619,7 @@ details.faq-q .faq-a p{font-size:15px;color:var(--ink-60);line-height:1.75}
   .process__steps::before{display:none}
   .pricing__grid{grid-template-columns:1fr}
   .about__inner{grid-template-columns:1fr}
-  /* Foto de about más pequeña en móvil */
-  .about__photo{aspect-ratio:4/3;max-height:260px}
+  .team-pillars{grid-template-columns:1fr 1fr}
   .contact__inner{grid-template-columns:1fr}
   /* Trust bar compacto */
   .trust{gap:16px;padding:12px 20px;flex-wrap:wrap;justify-content:flex-start}
@@ -919,26 +925,46 @@ details.faq-q .faq-a p{font-size:15px;color:var(--ink-60);line-height:1.75}
 <!-- ══ SOBRE NOSOTROS ════════════════════════════ -->
 <section class="about reveal" id="sobre-mi">
   <div class="about__inner">
-    <div class="about__photo">
-      <img src="assets/img/about-oscar.jpg" alt="Oscar Núñez — Fundador de NoCode Creator" loading="lazy" decoding="async">
-      <div class="about__photo-badge">
-        <strong>Oscar Núñez Vargas</strong>
-        <span>Fundador · NoCode Creator · Surco, Lima</span>
+
+    <!-- Panel visual de equipo -->
+    <div class="team-pillars">
+      <div class="team-pillar">
+        <div class="team-pillar__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="team-pillar__title">Desarrollo & Tecnología</div>
+        <div class="team-pillar__desc">Construimos webs, apps y automatizaciones con las herramientas NoCode más potentes del mercado — rápido, sin deuda técnica y a precio fijo.</div>
+      </div>
+      <div class="team-pillar">
+        <div class="team-pillar__icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="team-pillar__title">Atención al Cliente</div>
+        <div class="team-pillar__desc">Acompañamos cada proyecto de principio a fin. Respuesta rápida, comunicación clara y sin tecnicismos.</div>
+      </div>
+      <div class="team-pillar">
+        <div class="team-pillar__icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="team-pillar__title">Seguimiento post-entrega</div>
+        <div class="team-pillar__desc">No desaparecemos al entregar. Hacemos seguimiento para asegurarnos de que tu solución siga funcionando y creciendo contigo.</div>
       </div>
     </div>
+
     <div class="about__content">
       <div class="eyebrow">Sobre nosotros</div>
-      <h2 class="about__h2">Construido desde adentro de una empresa real</h2>
-      <p class="about__p">Trabajé en Grupo Sole – Rinnai Corporation y vi de cerca cómo negocios medianos pierden semanas en procesos manuales que una herramienta digital puede resolver en días. NoCode Creator nace de esa frustración.</p>
-      <p class="about__p">Hoy ayudo a dueños de negocio en Lima a tener webs, apps y sistemas que realmente trabajan — para que puedan recuperar su tiempo y tomar mejores decisiones.</p>
+      <h2 class="about__h2">Un equipo comprometido con tu tiempo y tu negocio</h2>
+      <p class="about__p">Nuestro equipo nació de ver de cerca cómo negocios medianos en Lima pierden semanas enteras en procesos manuales que una herramienta digital puede resolver en días. NoCode Creator existe para cambiar eso.</p>
+      <p class="about__p">Combinamos desarrollo, atención personalizada y seguimiento real — para que tengas una solución que funciona de verdad, sin que tengas que perseguir a nadie.</p>
       <p class="about__p">Un solo punto de contacto. Sin intermediarios. Precio fijo.</p>
       <div class="about__tags">
-        <span class="about__tag">Surco, Lima</span>
+        <span class="about__tag">Lima, Perú</span>
         <span class="about__tag">+20 proyectos</span>
         <span class="about__tag">Gestión digital</span>
         <span class="about__tag">Automatización</span>
       </div>
     </div>
+
   </div>
 </section>
 
