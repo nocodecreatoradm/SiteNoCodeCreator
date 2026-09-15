@@ -6,8 +6,6 @@
 <title>Desarrollo Web y Apps a Medida en Lima | NoCode Creator</title>
 <meta name="description" content="Llevamos tu idea a internet en semanas. Construimos webs, plataformas y apps a medida para que tu negocio crezca — sin que tengas que aprender a programar. Lima, Perú.">
 <link rel="canonical" href="https://nocodecreatoria.com/">
-
-<!-- Open Graph / Facebook / WhatsApp -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nocodecreatoria.com/">
 <meta property="og:title" content="Desarrollo Web y Apps a Medida en Lima | NoCode Creator">
@@ -15,460 +13,1030 @@
 <meta property="og:image" content="https://nocodecreatoria.com/assets/video/hero-demo-poster.jpg">
 <meta property="og:locale" content="es_PE">
 <meta property="og:site_name" content="NoCode Creator">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://nocodecreatoria.com/">
 <meta name="twitter:title" content="Desarrollo Web y Apps a Medida en Lima | NoCode Creator">
 <meta name="twitter:description" content="Llevamos tu idea a internet en semanas. Construimos webs, plataformas y apps a medida para que tu negocio crezca — sin que tengas que aprender a programar. Lima, Perú.">
 <meta name="twitter:image" content="https://nocodecreatoria.com/assets/video/hero-demo-poster.jpg">
-
 <link rel="icon" type="image/png" href="assets/logo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=7">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ── Reset ─────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#000;color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img,video{max-width:100%;display:block}
+ul{list-style:none}
+
+/* ── NAV ────────────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:64px;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(20px) saturate(1.5);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  transition:background .4s,border-color .4s;
+}
+.nav.is-light{
+  background:rgba(255,255,255,0.92);
+  border-bottom-color:rgba(0,0,0,0.08);
+}
+.nav__brand{
+  display:flex;align-items:center;gap:10px;
+  font-weight:700;font-size:14.5px;letter-spacing:.01em;
+  color:#fff;transition:color .3s;
+}
+.nav.is-light .nav__brand{color:#111}
+.nav__logo{width:28px;height:28px;border-radius:7px}
+.nav__links{
+  display:flex;align-items:center;gap:36px;
+  font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);
+  transition:color .3s;
+}
+.nav.is-light .nav__links{color:rgba(0,0,0,0.65)}
+.nav__links a{transition:color .15s}
+.nav__links a:hover{color:#fff}
+.nav.is-light .nav__links a:hover{color:#000}
+.nav__cta{
+  padding:10px 24px;border-radius:100px;
+  background:#1A6BFF;color:#fff;
+  font-size:14px;font-weight:600;
+  transition:background .15s,transform .15s,box-shadow .15s;
+}
+.nav__cta:hover{background:#155DD6;transform:translateY(-1px);box-shadow:0 4px 20px rgba(26,107,255,0.35)}
+.nav__burger{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:4px;
+}
+.nav__burger span{width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .2s}
+.nav-mobile{
+  display:none;position:fixed;top:64px;left:0;right:0;z-index:899;
+  flex-direction:column;
+  background:rgba(0,0,0,0.96);backdrop-filter:blur(20px);
+  padding:20px 32px 28px;gap:4px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.nav-mobile.open{display:flex}
+.nav-mobile a{
+  padding:12px 0;font-size:16px;font-weight:500;color:rgba(255,255,255,0.8);
+  border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.nav-mobile a:last-child{border-bottom:none}
+
+/* ── HERO ───────────────────────────────────────── */
+.hero{
+  position:relative;width:100%;height:100vh;min-height:640px;
+  background:#000;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.52) 50%, rgba(0,0,0,0.75) 100%),
+    url('assets/img/hero-lima-night.jpg');
+  background-size:cover;background-position:center;
+}
+#hero-canvas{
+  position:absolute;inset:0;width:100%;height:100%;
+  cursor:none;
+}
+.hero__content{
+  position:relative;z-index:2;
+  text-align:center;padding:0 24px;
+  display:flex;flex-direction:column;align-items:center;
+  pointer-events:none;
+}
+.hero__h1{
+  font-size:clamp(52px,8.5vw,118px);font-weight:800;
+  line-height:1.0;letter-spacing:-.04em;
+  color:#fff;text-wrap:balance;
+  margin-bottom:24px;pointer-events:none;
+}
+.hero__sub{
+  font-size:clamp(16px,1.8vw,20px);font-weight:400;
+  color:rgba(255,255,255,0.55);line-height:1.65;
+  max-width:520px;margin-bottom:44px;pointer-events:none;
+}
+.pill-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:14px 32px;border-radius:100px;
+  background:#1A6BFF;color:#fff;
+  font-size:16px;font-weight:600;
+  pointer-events:all;
+  transition:background .15s,transform .15s,box-shadow .15s;
+  box-shadow:0 0 40px rgba(26,107,255,0.22);
+}
+.pill-btn:hover{background:#155DD6;transform:translateY(-2px);box-shadow:0 8px 36px rgba(26,107,255,0.42)}
+.pill-btn svg{transition:transform .2s}
+.pill-btn:hover svg{transform:translateX(4px)}
+
+.scroll-hint{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.3);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+}
+.scroll-hint__arrow{
+  width:20px;height:32px;border:1.5px solid rgba(255,255,255,0.18);
+  border-radius:10px;display:flex;justify-content:center;padding-top:6px;
+}
+.scroll-hint__dot{
+  width:3px;height:7px;background:rgba(255,255,255,0.5);border-radius:2px;
+  animation:sdot 1.8s ease-in-out infinite;
+}
+@keyframes sdot{0%,100%{opacity:.4;transform:translateY(0)}50%{opacity:1;transform:translateY(8px)}}
+
+/* WhatsApp FAB */
+.fab-wa{
+  position:fixed;bottom:28px;right:28px;z-index:800;
+  width:54px;height:54px;border-radius:50%;
+  background:#25D366;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,0.4);
+  transition:transform .15s,box-shadow .15s;
+}
+.fab-wa:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,0.55)}
+
+/* ── FEATURES (dark bg → white alternating) ─────── */
+.features{background:#fff;color:#111}
+
+.feature{
+  display:grid;grid-template-columns:1fr 1fr;
+  max-width:1200px;margin:0 auto;
+  padding:100px 64px;gap:72px;align-items:center;
+  border-bottom:1px solid #EFEFEF;
+}
+.feature--flip .feature__text{order:2}
+.feature--flip .feature__media{order:1}
+
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .75s ease,transform .75s ease;
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+.feature__label{
+  display:inline-block;font-size:12px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:#1A6BFF;margin-bottom:18px;
+}
+.feature__h2{
+  font-size:clamp(30px,3.8vw,50px);font-weight:800;
+  line-height:1.06;letter-spacing:-.03em;
+  color:#111;margin-bottom:18px;text-wrap:balance;
+}
+.feature__p{
+  font-size:17px;font-weight:400;line-height:1.75;
+  color:#555;max-width:420px;margin-bottom:28px;
+}
+.learn-more{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:15px;font-weight:600;color:#1A6BFF;
+  transition:gap .15s;
+}
+.learn-more:hover{gap:10px}
+
+/* Feature media */
+.feature__media{
+  border-radius:22px;overflow:hidden;
+  background:#0A0A0A;aspect-ratio:4/3;position:relative;
+  box-shadow:0 24px 80px rgba(0,0,0,0.14);
+}
+.media-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+
+/* Visual 1 — task automation */
+.v1{background:linear-gradient(135deg,#0D1B2A,#1A2E4A)}
+.v1-wrap{padding:24px 28px;width:100%}
+.v1-task{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 15px;background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);border-radius:10px;
+  margin-bottom:10px;
+}
+.v1-check{
+  width:20px;height:20px;border-radius:50%;
+  border:2px solid rgba(255,255,255,0.18);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .4s;
+}
+.v1-task.done .v1-check{background:#06D6A0;border-color:#06D6A0}
+.v1-task.done .v1-check::after{content:'✓';font-size:11px;color:#000;font-weight:800}
+.v1-task-name{font-size:13px;color:#ddd;font-weight:400;flex:1}
+.v1-task.done .v1-task-name{color:rgba(255,255,255,0.3);text-decoration:line-through}
+.v1-badge{padding:3px 10px;border-radius:100px;font-size:10.5px;font-weight:600}
+.v1-badge--a{background:rgba(6,214,160,0.15);color:#06D6A0}
+.v1-time-box{
+  margin-top:14px;padding:16px;text-align:center;
+  background:rgba(6,214,160,0.08);border:1px solid rgba(6,214,160,0.2);border-radius:12px;
+}
+.v1-time-val{font-size:30px;font-weight:800;color:#06D6A0;letter-spacing:-.02em}
+.v1-time-lbl{font-size:11.5px;color:rgba(255,255,255,0.4);margin-top:3px}
+
+/* Visual 2 — dashboard */
+.v2{background:linear-gradient(135deg,#080818,#0F0F2A)}
+.v2-wrap{padding:22px 24px;width:100%}
+.v2-head{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:14px}
+.v2-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+.v2-m{padding:13px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px}
+.v2-val{font-size:21px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.v2-lbl{font-size:10.5px;color:rgba(255,255,255,0.38);margin-top:3px}
+.v2-chart{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;overflow:hidden;height:78px}
+
+/* Visual 3 — AI chat */
+.v3{background:linear-gradient(135deg,#08060E,#100C22)}
+.v3-wrap{padding:18px 20px;display:flex;flex-direction:column;gap:10px;width:100%}
+.v3-bubble{display:flex;gap:8px;align-items:flex-start;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.v3-bubble.show{opacity:1;transform:translateY(0)}
+.v3-bubble--out{flex-direction:row-reverse}
+.v3-av{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px}
+.v3-av--bot{background:linear-gradient(135deg,#4285F4,#7B61FF)}
+.v3-av--usr{background:rgba(255,255,255,0.08)}
+.v3-msg{padding:9px 13px;border-radius:13px;font-size:12px;line-height:1.55;max-width:220px}
+.v3-msg--bot{background:rgba(66,133,244,0.14);border:1px solid rgba(66,133,244,0.2);color:#c6d8ff}
+.v3-msg--usr{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.07);color:rgba(255,255,255,0.75)}
+.v3-sub{font-size:9.5px;color:rgba(255,255,255,0.22);margin-top:2px}
+.v3-typing{display:flex;gap:3px;align-items:center;padding:9px 13px;background:rgba(66,133,244,0.1);border:1px solid rgba(66,133,244,0.15);border-radius:13px;width:fit-content}
+.v3-typing span{width:5px;height:5px;border-radius:50%;background:#4285F4;animation:typ .9s ease-in-out infinite}
+.v3-typing span:nth-child(2){animation-delay:.15s}
+.v3-typing span:nth-child(3){animation-delay:.3s}
+@keyframes typ{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-5px);opacity:1}}
+
+/* Visual 4 — timeline */
+.v4{background:linear-gradient(135deg,#0C0900,#1C1500)}
+.v4-wrap{padding:24px 28px;width:100%}
+.v4-title{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:20px}
+.v4-step{display:flex;gap:14px;position:relative;padding-bottom:16px}
+.v4-step::after{content:'';position:absolute;left:11px;top:24px;width:2px;bottom:0;background:rgba(255,255,255,0.07)}
+.v4-step:last-of-type{padding-bottom:0}
+.v4-step:last-of-type::after{display:none}
+.v4-dot{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;border:2px solid rgba(255,179,0,0.25);color:#FFB300;background:rgba(255,179,0,0.08);transition:all .4s}
+.v4-step.done .v4-dot{background:#FFB300;border-color:#FFB300;color:#000}
+.v4-lbl{font-size:13px;font-weight:600;color:rgba(255,255,255,0.75)}
+.v4-days{font-size:11px;color:rgba(255,255,255,0.28);margin-top:2px}
+.v4-bar-wrap{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;margin-top:7px;width:160px}
+.v4-bar{height:100%;border-radius:2px;background:#FFB300;width:0;transition:width 1.2s ease}
+.v4-step.done .v4-bar{width:100%}
+.v4-total{margin-top:14px;padding:13px 16px;background:rgba(255,179,0,0.07);border:1px solid rgba(255,179,0,0.2);border-radius:10px;display:flex;justify-content:space-between;align-items:center}
+.v4-total-lbl{font-size:12px;color:rgba(255,255,255,0.38)}
+.v4-total-val{font-size:20px;font-weight:800;color:#FFB300;letter-spacing:-.02em}
+
+/* ── SERVICES SECTION ───────────────────────────── */
+.section-svc{
+  background:#fff;color:#111;
+  padding:96px 64px;border-top:1px solid #EFEFEF;
+}
+.section-head{text-align:center;margin-bottom:56px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#1A6BFF;margin-bottom:14px}
+.section-head h2{font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:#111;margin-bottom:12px}
+.section-head p{font-size:16px;color:#666;max-width:500px;margin:0 auto;line-height:1.65}
+.svc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  max-width:1080px;margin:0 auto;
+  border:1px solid #E8E8E8;border-radius:16px;overflow:hidden;
+}
+.svc-card{
+  padding:32px;border-right:1px solid #E8E8E8;border-bottom:1px solid #E8E8E8;
+  transition:background .15s;
+}
+.svc-card:hover{background:#FAFAFA}
+.svc-card:nth-child(3n){border-right:none}
+.svc-card:nth-child(n+5){border-bottom:none}
+.svc-card:nth-child(7){border-bottom:none}
+.svc-icon{
+  width:42px;height:42px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;font-size:20px;
+}
+.svc-card h3{font-size:16px;font-weight:700;color:#111;margin-bottom:9px}
+.svc-card p{font-size:13.5px;color:#666;line-height:1.65;margin-bottom:16px}
+.svc-cta{font-size:13px;font-weight:600;color:#1A6BFF;display:inline-flex;align-items:center;gap:5px;transition:gap .15s}
+.svc-cta:hover{gap:9px}
+.svc-card--new{background:#F8F8FF}
+.svc-badge{display:inline-block;padding:2px 10px;background:#EEF2FF;color:#4F46E5;font-size:10.5px;font-weight:700;border-radius:100px;margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}
+
+/* ── PROCESO ────────────────────────────────────── */
+.section-process{
+  background:#F9F9F9;color:#111;padding:96px 64px;
+}
+.steps-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  max-width:1080px;margin:48px auto 0;
+  border:1px solid #E8E8E8;border-radius:16px;overflow:hidden;
+}
+.step-card{
+  padding:32px 28px;border-right:1px solid #E8E8E8;
+  background:#fff;
+}
+.step-card:last-child{border-right:none}
+.step-num{font-size:12px;font-weight:700;color:#1A6BFF;letter-spacing:.08em;margin-bottom:16px}
+.step-card h3{font-size:16px;font-weight:700;color:#111;margin-bottom:10px;line-height:1.3}
+.step-card p{font-size:13.5px;color:#666;line-height:1.65}
+
+/* ── PORTAFOLIO ─────────────────────────────────── */
+.section-port{
+  background:#fff;color:#111;padding:80px 64px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;
+}
+.brands-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0;max-width:1080px;margin:44px auto 0;border:1px solid #E8E8E8;border-radius:16px;overflow:hidden}
+.brand-card{
+  flex:1;min-width:180px;padding:36px 24px;
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  border-right:1px solid #E8E8E8;text-align:center;
+}
+.brand-card:last-child{border-right:none}
+.brand-card img{max-height:36px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.5;transition:opacity .2s,filter .2s}
+.brand-card:hover img{filter:grayscale(0);opacity:1}
+.brand-tag{font-size:11px;color:#AAA;font-weight:500}
+
+/* ── PRICING ────────────────────────────────────── */
+.section-pricing{
+  background:#F9F9F9;color:#111;padding:96px 64px;
+}
+.pricing-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  max-width:1080px;margin:48px auto 0;
+}
+.pricing-card{
+  background:#fff;border:1px solid #E8E8E8;border-radius:16px;
+  padding:36px 32px;position:relative;
+  transition:box-shadow .2s,transform .2s;
+}
+.pricing-card:hover{box-shadow:0 12px 40px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.pricing-card--featured{
+  border-color:#1A6BFF;
+  box-shadow:0 4px 24px rgba(26,107,255,0.12);
+}
+.pricing-badge{
+  display:inline-block;padding:4px 12px;border-radius:100px;
+  background:#EEF4FF;color:#1A6BFF;font-size:11px;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px;
+}
+.pricing-card h3{font-size:19px;font-weight:700;color:#111;margin-bottom:10px}
+.pricing-card>p{font-size:14px;color:#666;line-height:1.6;margin-bottom:22px}
+.pricing-price{}
+.pricing-from{font-size:13px;color:#888;display:block;margin-bottom:2px}
+.pricing-amount{font-size:36px;font-weight:800;color:#111;letter-spacing:-.02em;display:block;margin-bottom:4px}
+.pricing-range{font-size:12px;color:#AAA;display:block;margin-bottom:22px}
+.pricing-list{display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.pricing-list li{font-size:14px;color:#444;display:flex;gap:9px;align-items:flex-start}
+.pricing-list li::before{content:'✓';color:#1A6BFF;font-weight:700;flex-shrink:0;margin-top:1px}
+.btn-pricing{
+  display:block;width:100%;padding:13px;
+  background:#111;color:#fff;
+  border-radius:10px;font-size:14.5px;font-weight:600;text-align:center;
+  transition:background .15s;
+}
+.pricing-card--featured .btn-pricing{background:#1A6BFF}
+.btn-pricing:hover{background:#333}
+.pricing-card--featured .btn-pricing:hover{background:#155DD6}
+.pricing-note{
+  text-align:center;margin-top:24px;font-size:13px;color:#999;
+  max-width:1080px;margin-left:auto;margin-right:auto;margin-top:24px;
+}
+
+/* ── ABOUT ──────────────────────────────────────── */
+.section-about{
+  background:#111;color:#fff;padding:96px 64px;
+}
+.about-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;
+  max-width:1080px;margin:0 auto;align-items:center;
+}
+.about-photo{border-radius:18px;overflow:hidden;aspect-ratio:4/3}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about-eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:16px}
+.about-h2{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:22px;text-wrap:balance}
+.about-p{font-size:15.5px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:14px}
+
+/* ── FAQ ────────────────────────────────────────── */
+.section-faq{
+  background:#F9F9F9;color:#111;padding:96px 64px;
+}
+.faq-wrap{max-width:720px;margin:48px auto 0}
+.faq-item{
+  border-bottom:1px solid #E8E8E8;
+}
+.faq-item summary{
+  padding:20px 0;font-size:16px;font-weight:600;color:#111;
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+  list-style:none;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:'+';font-size:20px;font-weight:300;color:#999;
+  flex-shrink:0;margin-left:16px;transition:transform .2s;
+}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item__content{padding:0 0 20px}
+.faq-item__content p{font-size:15px;color:#555;line-height:1.72}
+
+/* ── CONTACT ────────────────────────────────────── */
+.section-contact{
+  background:#fff;color:#111;padding:96px 64px;border-top:1px solid #EFEFEF;
+}
+.contact-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;
+  max-width:1080px;margin:0 auto;align-items:start;
+}
+.contact-info h2{font-size:clamp(28px,3.5vw,42px);font-weight:800;letter-spacing:-.03em;margin-bottom:16px;line-height:1.1}
+.contact-info p{font-size:16px;color:#555;line-height:1.7;margin-bottom:28px}
+.contact-link{
+  display:flex;align-items:center;gap:12px;
+  font-size:15px;font-weight:500;color:#111;
+  padding:14px 0;border-bottom:1px solid #EFEFEF;
+  transition:color .15s;
+}
+.contact-link:hover{color:#1A6BFF}
+.contact-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.contact-dot--green{background:#25D366}
+.contact-dot--blue{background:#1A6BFF}
+.contact-form{display:flex;flex-direction:column;gap:12px}
+.contact-form input,
+.contact-form textarea{
+  width:100%;padding:13px 16px;
+  border:1px solid #E0E0E0;border-radius:10px;
+  font-size:15px;font-family:inherit;color:#111;
+  background:#FAFAFA;
+  transition:border-color .15s,box-shadow .15s;
+  outline:none;
+}
+.contact-form input:focus,
+.contact-form textarea:focus{border-color:#1A6BFF;box-shadow:0 0 0 3px rgba(26,107,255,0.08);background:#fff}
+.contact-form textarea{resize:vertical;min-height:120px}
+.contact-form__botcheck{position:absolute;left:-9999px;opacity:0;pointer-events:none}
+.contact-form__consent{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:13px;color:#666;line-height:1.5;cursor:pointer;
+}
+.contact-form__consent input{width:auto;margin-top:2px;accent-color:#1A6BFF}
+.contact-form__consent a{color:#1A6BFF}
+.contact-form button[type="submit"]{
+  padding:14px;background:#1A6BFF;color:#fff;
+  border:none;border-radius:10px;
+  font-size:15px;font-weight:600;font-family:inherit;
+  cursor:pointer;transition:background .15s;
+}
+.contact-form button:hover{background:#155DD6}
+.contact-form__success{font-size:14px;color:#16A34A;text-align:center;font-weight:500}
+.contact-form__error{font-size:14px;color:#DC2626;text-align:center}
+
+/* ── FINAL CTA ──────────────────────────────────── */
+.section-final{
+  background:#000;padding:128px 24px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.section-final__bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.92) 100%),
+    url('assets/img/lifestyle-tiempo-libre.jpg');
+  background-size:cover;background-position:center;
+  transform:scale(1.04);transition:transform 8s ease;
+}
+.section-final:hover .section-final__bg{transform:scale(1.0)}
+.section-final>*:not(.section-final__bg){position:relative;z-index:1}
+.final-eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:24px}
+.final-h2{font-size:clamp(40px,6.5vw,84px);font-weight:800;letter-spacing:-.04em;line-height:1.0;color:#fff;text-wrap:balance;margin-bottom:20px}
+.final-sub{font-size:18px;color:rgba(255,255,255,0.45);max-width:460px;margin:0 auto 44px;line-height:1.65}
+
+/* ── FOOTER ─────────────────────────────────────── */
+.footer{
+  background:#000;border-top:1px solid rgba(255,255,255,0.07);
+  padding:40px 64px;
+  display:flex;align-items:center;justify-content:space-between;
+  color:rgba(255,255,255,0.3);font-size:13px;
+}
+.footer__brand{display:flex;align-items:center;gap:10px;font-weight:600;color:rgba(255,255,255,0.5)}
+.footer__logo{width:24px;height:24px;border-radius:6px}
+.footer__links{display:flex;gap:28px}
+.footer__links a{color:inherit;transition:color .15s}
+.footer__links a:hover{color:rgba(255,255,255,0.7)}
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:960px){
+  .nav{padding:0 24px}
+  .nav__links{display:none}
+  .nav__burger{display:flex;color:#fff}
+  .nav.is-light .nav__burger{color:#111}
+  .feature{grid-template-columns:1fr;padding:64px 24px;gap:44px}
+  .feature--flip .feature__text{order:unset}
+  .feature--flip .feature__media{order:unset}
+  .feature__media{aspect-ratio:16/10}
+  .section-svc,.section-process,.section-port,.section-pricing,
+  .section-about,.section-faq,.section-contact,.section-final{padding:64px 24px}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc-card:nth-child(n){border-bottom:1px solid #E8E8E8}
+  .svc-card:nth-child(2n){border-right:none}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .step-card:nth-child(2){border-right:none}
+  .step-card:nth-child(n+3){border-top:1px solid #E8E8E8}
+  .brands-grid{flex-direction:column;gap:0}
+  .brand-card{border-right:none;border-bottom:1px solid #E8E8E8;width:100%}
+  .brand-card:last-child{border-bottom:none}
+  .pricing-grid{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr}
+  .about-photo{display:none}
+  .contact-inner{grid-template-columns:1fr}
+  .footer{flex-direction:column;gap:16px;padding:32px 24px;text-align:center}
+  .footer__links{flex-wrap:wrap;justify-content:center}
+  .section-head{text-align:left}
+}
+@media(max-width:600px){
+  .svc-grid,.steps-grid{grid-template-columns:1fr}
+  .svc-card,.step-card{border-right:none}
+}
+</style>
 </head>
 <body>
 
-  <!-- FONDO ANIMADO -->
-  <div class="bg-scene" aria-hidden="true">
-    <div class="bg-scene__layer" data-parallax="0.14"><span class="bg-scene__blob bg-scene__blob--violet"></span></div>
-    <div class="bg-scene__layer" data-parallax="-0.1"><span class="bg-scene__blob bg-scene__blob--amber"></span></div>
-    <div class="bg-scene__layer" data-parallax="0.08"><span class="bg-scene__blob bg-scene__blob--ink"></span></div>
-    <div class="bg-scene__layer" data-parallax="0.05"><span class="bg-scene__mark">&lt;/&gt;</span></div>
-  </div>
-
-  <!-- NAV -->
-  <header class="nav">
-    <a href="#top" class="nav__brand">
-      <img src="assets/logo-icon.png" alt="" class="nav__logo">
-      <span class="nav__brandname">NOCODE CREATOR</span>
-    </a>
-    <nav class="nav__links">
-      <a href="#beneficios">Beneficios</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#precios">Precios</a>
-      <a href="#faq">FAQ</a>
-      <a href="#" class="btn btn--nav js-wa-link" target="_blank" rel="noopener">Escríbenos →</a>
-    </nav>
-    <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobile">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
-
-  <!-- MENU MOVIL -->
-  <div class="nav-mobile" id="navMobile">
-    <a href="#beneficios">Beneficios</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#precios">Precios</a>
-    <a href="#faq">FAQ</a>
-  </div>
-
-  <!-- BOTON FLOTANTE WHATSAPP -->
-  <a href="#" class="fab-wa js-wa-link" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
-    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.6 9 10.1 7.8 9.9 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 2 3 4.7 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.2L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3C3.9 14.9 3.4 13.5 3.4 12c0-4.7 3.9-8.6 8.6-8.6s8.6 3.9 8.6 8.6-3.9 8.6-8.6 8.6z"/></svg>
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand">
+    <img src="assets/logo-icon.png" alt="" class="nav__logo">
+    NoCode Creator
   </a>
+  <nav>
+    <ul class="nav__links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+  <a href="#" class="nav__cta js-wa-link" target="_blank" rel="noopener">Escríbenos</a>
+  <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <video class="hero__video" muted loop playsinline
-           poster="assets/video/hero-demo-poster.jpg" aria-hidden="true">
-      <source src="assets/video/hero-demo.mp4" type="video/mp4">
-    </video>
-    <div class="hero__overlay" aria-hidden="true"></div>
-    <div class="hero__copy">
-      <h1 class="hero__title">Menos tecnología. Más negocio.</h1>
-      <p class="hero__subtitle">NoCode Creator convierte tu idea en una herramienta digital real, en semanas. Nos encargamos de la tecnología para que tú te enfoques en hacer crecer tu negocio.</p>
-      <div class="hero__actions">
-        <a href="#" class="btn btn--primary js-wa-link" target="_blank" rel="noopener">Cotiza tu proyecto por WhatsApp</a>
-      </div>
-      <div class="hero__stats">
-        <div class="stat">
-          <div class="stat__value">Entrega</div>
-          <div class="stat__label">en semanas, no meses</div>
-        </div>
-        <div class="stat">
-          <div class="stat__value">Tu herramienta</div>
-          <div class="stat__label">tu control total</div>
-        </div>
-        <div class="stat">
-          <div class="stat__value">Un contacto</div>
-          <div class="stat__label">de principio a fin</div>
+<!-- MOBILE NAV -->
+<div class="nav-mobile" id="navMobile">
+  <a href="#servicios">Servicios</a>
+  <a href="#proceso">Proceso</a>
+  <a href="#precios">Precios</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contacto">Contacto</a>
+</div>
+
+<!-- WHATSAPP FAB -->
+<a href="#" class="fab-wa js-wa-link" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.6 9 10.1 7.8 9.9 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 2 3 4.7 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.2L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3C3.9 14.9 3.4 13.5 3.4 12c0-4.7 3.9-8.6 8.6-8.6s8.6 3.9 8.6 8.6-3.9 8.6-8.6 8.6z"/></svg>
+</a>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero__content">
+    <h1 class="hero__h1">Más tiempo<br>para ti.</h1>
+    <p class="hero__sub">Tecnología que trabaja por ti — para que puedas enfocarte en hacer crecer tu negocio, estar con los tuyos, y vivir con más orden.</p>
+    <a href="#" class="pill-btn js-wa-link" target="_blank" rel="noopener">
+      Cotiza tu proyecto
+      <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-hint__arrow"><div class="scroll-hint__dot"></div></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div class="features" id="beneficios">
+
+  <!-- 1: Recupera tu tiempo -->
+  <div class="feature reveal" id="f1">
+    <div class="feature__text">
+      <span class="feature__label">Automatización</span>
+      <h2 class="feature__h2">Recupera horas cada semana.</h2>
+      <p class="feature__p">Tu equipo hace lo que importa mientras la tecnología trabaja por ti — sin perder horas en tareas que una herramienta puede hacer mejor.</p>
+      <a href="#contacto" class="learn-more">
+        Cotiza este servicio
+        <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <div class="feature__media">
+      <div class="media-inner v1">
+        <div class="v1-wrap" id="v1w">
+          <div class="v1-task" data-delay="0"><div class="v1-check"></div><span class="v1-task-name">Enviar facturas a clientes</span><span class="v1-badge v1-badge--a">Auto</span></div>
+          <div class="v1-task" data-delay="550"><div class="v1-check"></div><span class="v1-task-name">Registrar pedidos en CRM</span><span class="v1-badge v1-badge--a">Auto</span></div>
+          <div class="v1-task" data-delay="1100"><div class="v1-check"></div><span class="v1-task-name">Recordatorios de cobro</span><span class="v1-badge v1-badge--a">Auto</span></div>
+          <div class="v1-task" data-delay="1650"><div class="v1-check"></div><span class="v1-task-name">Reporte semanal de ventas</span><span class="v1-badge v1-badge--a">Auto</span></div>
+          <div class="v1-time-box"><div class="v1-time-val" id="v1h">0 h</div><div class="v1-time-lbl">recuperadas esta semana</div></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- BENEFICIOS -->
-  <section id="beneficios" class="section section--benefits" data-reveal>
-    <div class="section__head">
-      <div class="eyebrow">Por qué elegirnos</div>
-      <h2>Tu negocio crece.<br>Tú recuperas tu tiempo.</h2>
+  <!-- 2: Más orden -->
+  <div class="feature feature--flip reveal" id="f2">
+    <div class="feature__text">
+      <span class="feature__label">Panel de control</span>
+      <h2 class="feature__h2">Tu negocio, más ordenado.</h2>
+      <p class="feature__p">Un panel propio con tus métricas, clientes y operaciones en un solo lugar. Tomas mejores decisiones con datos reales, no con intuición.</p>
+      <a href="#contacto" class="learn-more">
+        Cotiza este servicio
+        <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
     </div>
-
-    <!-- Fila destacada 1: texto izquierda, imagen derecha -->
-    <div class="benefit-split">
-      <div class="benefit-split__text">
-        <p class="benefit-split__label">⏱ Recupera tu tiempo</p>
-        <h3>Automatiza lo repetitivo.<br>Enfócate en crecer.</h3>
-        <p>Tu equipo hace lo que importa mientras la tecnología trabaja por ti — sin perder horas en tareas que una herramienta puede hacer mejor.</p>
-      </div>
-      <div class="benefit-split__visual">
-        <img src="assets/benefits/b01-mas-tiempo.jpg" alt="Empresario con más tiempo para su negocio" loading="lazy">
-      </div>
+    <div class="feature__media" style="overflow:hidden;border-radius:22px;box-shadow:0 24px 80px rgba(0,0,0,0.14);aspect-ratio:4/3">
+      <img src="assets/img/workspace-orden.jpg" alt="Escritorio organizado con dashboard — NoCode Creator" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
     </div>
+  </div>
 
-    <!-- Fila destacada 2: imagen izquierda, texto derecha -->
-    <div class="benefit-split benefit-split--flip">
-      <div class="benefit-split__text">
-        <p class="benefit-split__label">🚀 Lanza antes que tu competencia</p>
-        <h3>Tu producto en semanas,<br>no en meses.</h3>
-        <p>Mientras otros esperan a una agencia tradicional, tu negocio ya está funcionando y captando clientes. La velocidad es tu ventaja.</p>
-      </div>
-      <div class="benefit-split__visual">
-        <img src="assets/benefits/b05-lanza-antes.jpg" alt="Lanzamiento de producto digital rápido" loading="lazy">
-      </div>
+  <!-- 3: 24/7 IA -->
+  <div class="feature reveal" id="f3">
+    <div class="feature__text">
+      <span class="feature__label">Agentes de IA</span>
+      <h2 class="feature__h2">Tu negocio, disponible siempre.</h2>
+      <p class="feature__p">Agentes de IA que atienden, responden preguntas y capturan leads por ti — a las 3 a.m., en feriados, cuando estás con tu familia.</p>
+      <a href="#contacto" class="learn-more">
+        Cotiza este servicio
+        <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
     </div>
-
-    <!-- Grid secundario: 4 beneficios sin imagen -->
-    <div class="benefits-secondary">
-      <div class="benefit-item">
-        <span class="benefit-item__icon">🔒</span>
-        <h4>Mayor seguridad</h4>
-        <p>Plataformas con acceso controlado y backups. Lo que construimos, dura.</p>
-      </div>
-      <div class="benefit-item">
-        <span class="benefit-item__icon">📈</span>
-        <h4>Escalable desde el día 1</h4>
-        <p>Añades funciones cuando tu negocio crece, sin rehacer todo desde cero.</p>
-      </div>
-      <div class="benefit-item">
-        <span class="benefit-item__icon">📊</span>
-        <h4>Control total</h4>
-        <p>Panel propio, reportes claros. No dependes de nosotros para operar.</p>
-      </div>
-      <div class="benefit-item">
-        <span class="benefit-item__icon">🤝</span>
-        <h4>Acompañamiento real</h4>
-        <p>Soporte activo los primeros 30 días. Siempre sabes a quién escribirle.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section id="servicios" class="section section--alt" data-reveal>
-    <div class="section__head">
-      <div class="eyebrow">Servicios</div>
-      <h2>Lo que construimos para ti</h2>
-      <p>De la idea al producto funcionando — en semanas, no en meses.</p>
-    </div>
-    <div class="services-grid">
-
-      <div class="service-card">
-        <div class="service-card__icon" style="background:oklch(0.93 0.03 240);color:oklch(0.5 0.14 240)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="7" y1="13" x2="13" y2="13"/><line x1="7" y1="16.5" x2="17" y2="16.5"/></svg>
-        </div>
-        <h3>Atrae más clientes</h3>
-        <p>Una página diseñada para convertir visitantes en leads y ventas — no solo para "tener presencia".</p>
-        <a href="#contacto" class="service-card__cta">Cotizar este servicio →</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-card__icon" style="background:oklch(0.93 0.05 150);color:oklch(0.5 0.14 150)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"/></svg>
-        </div>
-        <h3>Tu marca, online y profesional</h3>
-        <p>Presencia completa que genera confianza desde el primer segundo. Tu negocio, representado como merece.</p>
-        <a href="#contacto" class="service-card__cta">Cotizar este servicio →</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-card__icon" style="background:oklch(0.93 0.05 90);color:oklch(0.55 0.14 90)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3h2l2.3 12.1a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.6L21 7H6"/><circle cx="9" cy="20" r="1.4" fill="currentColor" stroke="none"/><circle cx="18" cy="20" r="1.4" fill="currentColor" stroke="none"/></svg>
-        </div>
-        <h3>Vende sin fricción</h3>
-        <p>Tu tienda lista para recibir pedidos, cobrar y gestionar inventario — sin complicaciones técnicas.</p>
-        <a href="#contacto" class="service-card__cta">Cotizar este servicio →</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-card__icon" style="background:oklch(0.93 0.04 300);color:oklch(0.5 0.14 300)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="15" cy="12" r="2"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="11" cy="18" r="2"/></svg>
-        </div>
-        <h3>Escala tu operación</h3>
-        <p>Herramientas internas que automatizan lo que hoy hacen a mano, sin depender de software genérico.</p>
-        <a href="#contacto" class="service-card__cta">Cotizar este servicio →</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-card__icon" style="background:oklch(0.93 0.04 20);color:oklch(0.55 0.14 20)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 5,13 11,13 10,22 19,10 12,10"/></svg>
-        </div>
-        <h3>Elimina tareas repetitivas</h3>
-        <p>Conecto tus procesos para que tu equipo recupere horas cada semana — sin contratar más personas.</p>
-        <a href="#contacto" class="service-card__cta">Cotizar este servicio →</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-card__icon" style="background:oklch(0.93 0.03 240);color:oklch(0.5 0.14 240)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 1 5 4.5 5 8.5 0 2-1 4-2 5.2l-3-1-3 1c-1-1.2-2-3.2-2-5.2C7 6.5 9 3 12 2z"/><circle cx="12" cy="9" r="1.6"/><path d="M9 15.5 7 19l2.5-.8"/><path d="M15 15.5 17 19l-2.5-.8"/></svg>
-        </div>
-        <h3>Valida tu idea, rápido</h3>
-        <p>Un producto real en semanas para confirmar que tu mercado existe — antes de invertir en grande.</p>
-        <a href="#contacto" class="service-card__cta">Cotizar este servicio →</a>
-      </div>
-
-      <div class="service-card service-card--featured">
-        <div class="service-card__icon" style="background:oklch(0.93 0.04 190);color:oklch(0.5 0.13 190)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><circle cx="9" cy="14" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.3" fill="currentColor" stroke="none"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1" fill="currentColor" stroke="none"/><path d="M4 12H2M22 12h-2"/></svg>
-        </div>
-        <div class="service-card__badge">Nuevo</div>
-        <h3>Tu negocio, disponible 24/7</h3>
-        <p>Agentes de IA que atienden, venden o responden por ti, incluso cuando tú no estás.</p>
-        <a href="#contacto" class="service-card__cta">Cotizar este servicio →</a>
-      </div>
-
-    </div>
-    </div>
-  </section>
-
-  <!-- PROCESO -->
-  <section id="proceso" class="section" data-reveal>
-    <div class="section__inner">
-      <div class="section__head">
-        <div class="eyebrow">Cómo funciona</div>
-        <h2>Un camino sin sorpresas</h2>
-        <p>Claridad desde el primer mensaje. Sabes exactamente qué pasa en cada paso.</p>
-      </div>
-      <div class="grid grid--steps">
-        <div class="step">
-          <div class="step__num">1</div>
-          <h3>Cuéntanos tu objetivo</h3>
-          <p>Una llamada o chat de 30 min donde entendemos qué necesitas lograr — no solo qué quieres construir.</p>
-        </div>
-        <div class="step">
-          <div class="step__num">2</div>
-          <h3>Propuesta clara en 24 hrs</h3>
-          <p>Alcance, tiempos y precio exacto por escrito. Sin letra chica, sin costos que aparecen después.</p>
-        </div>
-        <div class="step">
-          <div class="step__num">3</div>
-          <h3>Construimos con actualizaciones</h3>
-          <p>Ves el avance en tiempo real. No desaparecemos semanas y volvemos con "esto es lo que quedó".</p>
-        </div>
-        <div class="step">
-          <div class="step__num">4</div>
-          <h3>Lanzamos y te acompañamos</h3>
-          <p>Tu proyecto publicado, con soporte activo los primeros 30 días para ajustes y dudas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTAFOLIO -->
-  <section id="portafolio" class="section" data-reveal>
-    <div class="section__head">
-      <div class="eyebrow">Portafolio</div>
-      <h2>Marcas con las que he trabajado</h2>
-      <p>Experiencia en proyectos digitales para las siguientes marcas y empresas.</p>
-    </div>
-    <div class="grid grid--portfolio">
-      <div class="card card--brand">
-        <div class="card__logo"><img src="assets/brands/sole.png" alt="Sole"></div>
-        <div class="card__tag">Gestión de proyecto digital</div>
-      </div>
-      <div class="card card--brand">
-        <div class="card__logo"><img src="assets/brands/rinnai.png" alt="Rinnai"></div>
-        <div class="card__tag">Gestión de proyecto digital</div>
-      </div>
-      <div class="card card--brand">
-        <div class="card__logo"><img src="assets/brands/metusa.png" alt="Metusa"></div>
-        <div class="card__tag">Gestión de proyecto digital</div>
-      </div>
-      <div class="card card--brand">
-        <div class="card__logo"><img src="assets/brands/s-collection.png" alt="S+Collection"></div>
-        <div class="card__tag">Gestión de proyecto digital</div>
-      </div>
-      <div class="card card--brand">
-        <div class="card__logo"><img src="assets/brands/dermotienda.svg" alt="Dermotienda"></div>
-        <div class="card__tag">Plataforma web</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRECIOS -->
-  <section id="precios" class="section section--alt" data-reveal>
-    <div class="section__inner">
-      <div class="section__head">
-        <div class="eyebrow">Precios</div>
-        <h2>Cada proyecto es distinto</h2>
-        <p>Por eso no hay tarifas fijas: recibes una cotización clara después de entender lo que necesitas — sin compromiso.</p>
-      </div>
-      <div class="grid grid--pricing">
-
-        <div class="card card--pricing">
-          <h3>Landing / Web simple</h3>
-          <p>Ideal para negocios que necesitan presencia online clara y rápida de lanzar.</p>
-          <div class="pricing__price">
-            <span class="pricing__from">Desde</span>
-            <span class="pricing__amount">S/. 800</span>
-            <span class="pricing__range">Rango típico: S/. 800 – 2,000</span>
+    <div class="feature__media">
+      <div class="media-inner v3">
+        <div class="v3-wrap" id="v3w">
+          <div class="v3-bubble" data-delay="200">
+            <div class="v3-av v3-av--usr">👤</div>
+            <div><div class="v3-msg v3-msg--usr">Hola, ¿tienen delivery para Miraflores?</div><div class="v3-sub">11:47 p.m.</div></div>
           </div>
-          <ul class="pricing__includes">
-            <li>Diseño personalizado</li>
-            <li>Versión móvil incluida</li>
-            <li>Formulario de contacto</li>
-            <li>Entrega en 2–3 semanas</li>
-          </ul>
-          <a href="#" class="btn btn--block js-wa-link" target="_blank" rel="noopener">Cotizar este proyecto</a>
-        </div>
-
-        <div class="card card--pricing card--pricing-featured">
-          <div class="pricing__badge">Más solicitado</div>
-          <h3>Plataforma / App web</h3>
-          <p>Funcionalidades a medida: login, paneles de control, integraciones y más.</p>
-          <div class="pricing__price">
-            <span class="pricing__from">Desde</span>
-            <span class="pricing__amount">S/. 2,500</span>
-            <span class="pricing__range">Rango típico: S/. 2,500 – 8,000</span>
+          <div class="v3-bubble" data-delay="900" id="v3t">
+            <div class="v3-av v3-av--bot">🤖</div>
+            <div class="v3-typing"><span></span><span></span><span></span></div>
           </div>
-          <ul class="pricing__includes">
-            <li>Todo lo de Landing +</li>
-            <li>Autenticación de usuarios</li>
-            <li>Panel de administración</li>
-            <li>Integraciones de API</li>
-            <li>Entrega en 4–8 semanas</li>
-          </ul>
-          <a href="#" class="btn btn--block js-wa-link" target="_blank" rel="noopener">Cotizar este proyecto</a>
-        </div>
-
-        <div class="card card--pricing">
-          <h3>Proyecto a gran escala</h3>
-          <p>Para empresas con necesidades específicas, múltiples usuarios y mayor complejidad.</p>
-          <div class="pricing__price">
-            <span class="pricing__from">Desde</span>
-            <span class="pricing__amount">S/. 8,000</span>
-            <span class="pricing__range">Según alcance y duración</span>
+          <div class="v3-bubble" data-delay="1800">
+            <div class="v3-av v3-av--bot">🤖</div>
+            <div><div class="v3-msg v3-msg--bot">¡Hola! Sí, hacemos delivery a Miraflores. ¿Quieres cotización o revisar el menú del día?</div><div class="v3-sub">Asistente IA · 11:47 p.m.</div></div>
           </div>
-          <ul class="pricing__includes">
-            <li>Todo lo anterior +</li>
-            <li>Arquitectura a medida</li>
-            <li>Soporte extendido</li>
-            <li>Reunión de discovery incluida</li>
-          </ul>
-          <a href="#" class="btn btn--block js-wa-link" target="_blank" rel="noopener">Cotizar este proyecto</a>
+          <div class="v3-bubble v3-bubble--out" data-delay="2700">
+            <div class="v3-av v3-av--usr">👤</div>
+            <div><div class="v3-msg v3-msg--usr">El menú del día, gracias</div></div>
+          </div>
+          <div class="v3-bubble" data-delay="3300">
+            <div class="v3-av v3-av--bot">🤖</div>
+            <div><div class="v3-msg v3-msg--bot">Claro, te lo envío ahora mismo 🍽️</div></div>
+          </div>
         </div>
-
-      </div>
-      <p class="pricing__note">Precios en soles (PEN) — rangos orientativos. La cotización exacta, sin compromiso, se entrega después de entender tu proyecto.</p>
-    </div>
-  </section>
-
-  <!-- SOBRE MI -->
-  <section id="sobre-mi" class="about" data-reveal>
-    <div class="about__inner">
-      <div class="about__photo">
-        <img src="assets/oficina-recepcion.jpg" alt="Ambiente de oficina profesional NoCode Creator">
-      </div>
-      <div>
-        <div class="eyebrow eyebrow--light">Sobre nosotros</div>
-        <h2 class="about__title">NoCode Creator nace para que crear tu web o app no dependa de saber programar</h2>
-        <p class="about__text">NoCode Creator es un estudio digital con base en Surco, Lima, liderado por Oscar Núñez Vargas, Analista de Gestión de Proyectos Digitales con experiencia en Grupo Sole – Rinnai Corporation. Diseñamos y desarrollamos sitios y plataformas web sin código tradicional, con el mismo cuidado y calidad que un desarrollo a medida.</p>
-        <p class="about__text">Un solo punto de contacto, de principio a fin: sin intermediarios, sin letra chica.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FAQ -->
-  <section id="faq" class="section section--narrow" data-reveal>
-    <div class="section__head">
-      <div class="eyebrow">Preguntas frecuentes</div>
-      <h2>Resolviendo tus dudas</h2>
+  <!-- 4: Lanza rápido -->
+  <div class="feature feature--flip reveal" id="f4">
+    <div class="feature__text">
+      <span class="feature__label">Velocidad</span>
+      <h2 class="feature__h2">Lanza antes que tu competencia.</h2>
+      <p class="feature__p">Mientras otros esperan meses a una agencia tradicional, tu negocio ya está en línea, captando clientes y generando ingresos.</p>
+      <a href="#contacto" class="learn-more">
+        Cotiza este servicio
+        <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
     </div>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>¿Necesito saber programar para trabajar contigo?</summary>
-        <div class="faq-item__content">
-          <p>No. Cuéntanos qué necesitas y nosotros nos encargamos de construirlo — no requieres ningún conocimiento técnico.</p>
+    <div class="feature__media">
+      <div class="media-inner v4">
+        <div class="v4-wrap" id="v4w">
+          <p class="v4-title">Tu proyecto · línea de tiempo</p>
+          <div class="v4-step" data-delay="0"><div class="v4-dot">1</div><div><div class="v4-lbl">Reunión de objetivos</div><div class="v4-days">Día 1 · 30 min</div><div class="v4-bar-wrap"><div class="v4-bar"></div></div></div></div>
+          <div class="v4-step" data-delay="400"><div class="v4-dot">2</div><div><div class="v4-lbl">Propuesta + diseño</div><div class="v4-days">Días 2–5</div><div class="v4-bar-wrap"><div class="v4-bar"></div></div></div></div>
+          <div class="v4-step" data-delay="800"><div class="v4-dot">3</div><div><div class="v4-lbl">Desarrollo y pruebas</div><div class="v4-days">Días 6–16</div><div class="v4-bar-wrap"><div class="v4-bar"></div></div></div></div>
+          <div class="v4-step" data-delay="1200"><div class="v4-dot">4</div><div><div class="v4-lbl">🚀 Lanzamiento</div><div class="v4-days">Día ~18</div><div class="v4-bar-wrap"><div class="v4-bar"></div></div></div></div>
+          <div class="v4-total"><span class="v4-total-lbl">Tiempo total</span><span class="v4-total-val">~3 semanas</span></div>
         </div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Cuánto tiempo toma un proyecto?</summary>
-        <div class="faq-item__content">
-          <p>Depende del alcance, pero la mayoría de proyectos se entregan en semanas, no meses, gracias a un proceso ágil y herramientas modernas de desarrollo.</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Qué pasa si necesito cambios después de la entrega?</summary>
-        <div class="faq-item__content">
-          <p>Podemos conversar ajustes puntuales o un plan de soporte continuo, según lo que necesites.</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Es seguro y escalable lo que se construye sin código tradicional?</summary>
-        <div class="faq-item__content">
-          <p>Sí. Utilizamos plataformas y prácticas modernas pensadas para producción, con buen rendimiento y capacidad de crecer junto a tu negocio.</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Cómo empezamos?</summary>
-        <div class="faq-item__content">
-          <p>Escríbenos por WhatsApp o email contándonos tu idea, y te responderemos con los siguientes pasos.</p>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto" class="section section--alt" data-reveal>
-    <div class="contact-card">
-      <div class="contact-card__info">
-        <div class="eyebrow">Contacto</div>
-        <h2>Hablemos de tu proyecto</h2>
-        <p>Cuéntanos qué necesitas y recibirás una propuesta clara — usualmente en menos de 24 horas.</p>
-        <a href="#" class="contact-link contact-link--wa js-wa-link" target="_blank" rel="noopener">
-          <span class="contact-link__dot contact-link__dot--green"></span>
-          WhatsApp — <span class="js-wa-display">+51 960 560 064</span>
-        </a>
-        <a href="#" class="contact-link contact-link--mail js-mail-link">
-          <span class="contact-link__dot contact-link__dot--blue"></span>
-          <span class="js-mail-display">hola@nocodecreatoria.com</span>
-        </a>
       </div>
-      <form class="contact-form" id="contactForm">
-        <input type="hidden" name="access_key" value="c0b410bf-a28e-4f6f-aa36-bbae5e3a9c30">
-        <input type="checkbox" name="botcheck" class="contact-form__botcheck" tabindex="-1" autocomplete="off">
-        <input type="text" name="name" placeholder="Tu nombre" required>
-        <input type="email" name="email" placeholder="Tu email" required>
-        <textarea name="message" placeholder="Cuéntanos sobre tu proyecto..." rows="4" required></textarea>
-        <label class="contact-form__consent">
-          <input type="checkbox" required>
-          <span>Acepto que mis datos se usen solo para responder mi consulta, según la <a href="privacidad.html">Política de Privacidad</a>.</span>
-        </label>
-        <button type="submit">Enviar mensaje</button>
-        <p class="contact-form__success" id="contactSuccess" hidden>¡Gracias! Tu mensaje fue enviado — te responderemos pronto.</p>
-        <p class="contact-form__error" id="contactError" hidden>No pudimos enviar tu mensaje. Escríbenos directo por WhatsApp mientras lo resolvemos.</p>
-      </form>
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer__brand">
-      <img src="assets/logo-icon.png" alt="NoCode Creator" class="footer__logo">
-      <span>© 2026 NoCode Creator · Surco, Lima, Perú</span>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="section-svc reveal">
+  <div class="section-head">
+    <div class="eyebrow">Servicios</div>
+    <h2>Lo que construimos para ti</h2>
+    <p>De la idea al producto funcionando — en semanas, no en meses.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card"><div class="svc-icon" style="background:#EEF4FF;color:#2563EB">🌐</div><h3>Webs que convierten</h3><p>Diseñadas para convertir visitantes en leads y ventas — no solo para "tener presencia".</p><a href="#contacto" class="svc-cta">Cotizar →</a></div>
+    <div class="svc-card"><div class="svc-icon" style="background:#ECFDF5;color:#059669">🌍</div><h3>Tu marca, online y profesional</h3><p>Presencia completa que genera confianza desde el primer segundo.</p><a href="#contacto" class="svc-cta">Cotizar →</a></div>
+    <div class="svc-card"><div class="svc-icon" style="background:#FFFBEB;color:#D97706">🛒</div><h3>Vende sin fricción</h3><p>Tu tienda lista para recibir pedidos, cobrar y gestionar inventario.</p><a href="#contacto" class="svc-cta">Cotizar →</a></div>
+    <div class="svc-card"><div class="svc-icon" style="background:#F5F3FF;color:#7C3AED">⚙️</div><h3>Escala tu operación</h3><p>Herramientas internas que automatizan lo que hoy hacen a mano.</p><a href="#contacto" class="svc-cta">Cotizar →</a></div>
+    <div class="svc-card"><div class="svc-icon" style="background:#FFF7ED;color:#EA580C">⚡</div><h3>Elimina tareas repetitivas</h3><p>Conecto tus procesos para que tu equipo recupere horas cada semana.</p><a href="#contacto" class="svc-cta">Cotizar →</a></div>
+    <div class="svc-card"><div class="svc-icon" style="background:#F0FDF4;color:#16A34A">🚀</div><h3>Valida tu idea, rápido</h3><p>Un MVP real en semanas para confirmar que tu mercado existe.</p><a href="#contacto" class="svc-cta">Cotizar →</a></div>
+    <div class="svc-card svc-card--new" style="grid-column:1/-1;display:flex;align-items:flex-start;gap:20px"><div class="svc-icon" style="background:#EEF4FF;color:#2563EB;flex-shrink:0">🤖</div><div><div class="svc-badge">Nuevo</div><h3>Tu negocio, disponible 24/7</h3><p>Agentes de IA que atienden, venden o responden por ti, incluso cuando no estás.</p><a href="#contacto" class="svc-cta">Cotizar →</a></div></div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso" class="section-process reveal">
+  <div class="section-head" style="text-align:center">
+    <div class="eyebrow">Cómo funciona</div>
+    <h2>Un camino sin sorpresas</h2>
+    <p>Claridad desde el primer mensaje. Sabes exactamente qué pasa en cada paso.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num">01</div><h3>Cuéntanos tu objetivo</h3><p>Una llamada o chat de 30 min donde entendemos qué necesitas lograr — no solo qué quieres construir.</p></div>
+    <div class="step-card"><div class="step-num">02</div><h3>Propuesta clara en 24 hrs</h3><p>Alcance, tiempos y precio exacto por escrito. Sin letra chica, sin costos que aparecen después.</p></div>
+    <div class="step-card"><div class="step-num">03</div><h3>Construimos con actualizaciones</h3><p>Ves el avance en tiempo real. No desaparecemos semanas y volvemos con "esto es lo que quedó".</p></div>
+    <div class="step-card"><div class="step-num">04</div><h3>Lanzamos y te acompañamos</h3><p>Tu proyecto publicado, con soporte activo los primeros 30 días para ajustes y dudas.</p></div>
+  </div>
+</section>
+
+<!-- PORTAFOLIO -->
+<section id="portafolio" class="section-port reveal">
+  <div class="section-head" style="text-align:center">
+    <div class="eyebrow">Portafolio</div>
+    <h2>Marcas con las que he trabajado</h2>
+  </div>
+  <div class="brands-grid">
+    <div class="brand-card"><img src="assets/brands/sole.png" alt="Sole"><span class="brand-tag">Gestión digital</span></div>
+    <div class="brand-card"><img src="assets/brands/rinnai.png" alt="Rinnai"><span class="brand-tag">Gestión digital</span></div>
+    <div class="brand-card"><img src="assets/brands/metusa.png" alt="Metusa"><span class="brand-tag">Gestión digital</span></div>
+    <div class="brand-card"><img src="assets/brands/s-collection.png" alt="S+Collection"><span class="brand-tag">Gestión digital</span></div>
+    <div class="brand-card"><img src="assets/brands/dermotienda.svg" alt="Dermotienda"><span class="brand-tag">Plataforma web</span></div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios" class="section-pricing reveal">
+  <div class="section-head" style="text-align:center">
+    <div class="eyebrow">Precios</div>
+    <h2>Cada proyecto es distinto</h2>
+    <p>Recibes una cotización clara después de entender lo que necesitas — sin compromiso.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <h3>Landing / Web simple</h3>
+      <p>Ideal para negocios que necesitan presencia online clara y rápida de lanzar.</p>
+      <div class="pricing-price">
+        <span class="pricing-from">Desde</span>
+        <span class="pricing-amount">S/. 800</span>
+        <span class="pricing-range">Rango típico: S/. 800 – 2,000</span>
+      </div>
+      <ul class="pricing-list">
+        <li>Diseño personalizado</li>
+        <li>Versión móvil incluida</li>
+        <li>Formulario de contacto</li>
+        <li>Entrega en 2–3 semanas</li>
+      </ul>
+      <a href="#" class="btn-pricing js-wa-link" target="_blank" rel="noopener">Cotizar este proyecto</a>
     </div>
-    <div class="footer__links">
-      <a href="privacidad.html">Política de Privacidad</a>
-      <a href="aviso-legal.html">Aviso Legal</a>
+    <div class="pricing-card pricing-card--featured">
+      <div class="pricing-badge">Más solicitado</div>
+      <h3>Plataforma / App web</h3>
+      <p>Funcionalidades a medida: login, paneles de control, integraciones y más.</p>
+      <div class="pricing-price">
+        <span class="pricing-from">Desde</span>
+        <span class="pricing-amount">S/. 2,500</span>
+        <span class="pricing-range">Rango típico: S/. 2,500 – 8,000</span>
+      </div>
+      <ul class="pricing-list">
+        <li>Todo lo de Landing +</li>
+        <li>Autenticación de usuarios</li>
+        <li>Panel de administración</li>
+        <li>Integraciones de API</li>
+        <li>Entrega en 4–8 semanas</li>
+      </ul>
+      <a href="#" class="btn-pricing js-wa-link" target="_blank" rel="noopener">Cotizar este proyecto</a>
     </div>
-    <div class="footer__tag">Tecnología que trabaja para ti.</div>
-  </footer>
+    <div class="pricing-card">
+      <h3>Proyecto a gran escala</h3>
+      <p>Para empresas con necesidades específicas, múltiples usuarios y mayor complejidad.</p>
+      <div class="pricing-price">
+        <span class="pricing-from">Desde</span>
+        <span class="pricing-amount">S/. 8,000</span>
+        <span class="pricing-range">Según alcance y duración</span>
+      </div>
+      <ul class="pricing-list">
+        <li>Todo lo anterior +</li>
+        <li>Arquitectura a medida</li>
+        <li>Soporte extendido</li>
+        <li>Reunión de discovery incluida</li>
+      </ul>
+      <a href="#" class="btn-pricing js-wa-link" target="_blank" rel="noopener">Cotizar este proyecto</a>
+    </div>
+  </div>
+  <p class="pricing-note">Precios en soles (PEN) — rangos orientativos. La cotización exacta se entrega después de entender tu proyecto.</p>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section id="sobre-mi" class="section-about reveal">
+  <div class="about-inner">
+    <div class="about-photo" style="position:relative">
+      <img src="assets/img/about-oscar.jpg" alt="Oscar Núñez — Fundador de NoCode Creator, Lima Perú" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+      <div style="position:absolute;bottom:20px;left:20px;background:rgba(255,255,255,0.1);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:12px 16px">
+        <p style="font-size:14px;font-weight:700;color:#fff;margin-bottom:2px">Oscar Núñez</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.6)">Fundador · NoCode Creator</p>
+      </div>
+    </div>
+    <div>
+      <p class="about-eyebrow">Sobre nosotros</p>
+      <h2 class="about-h2">NoCode Creator nace para que crear tu web o app no dependa de saber programar</h2>
+      <p class="about-p">Somos un estudio digital con base en Surco, Lima, liderado por Oscar Núñez Vargas, Analista de Gestión de Proyectos Digitales con experiencia en Grupo Sole – Rinnai Corporation.</p>
+      <p class="about-p">Un solo punto de contacto, de principio a fin: sin intermediarios, sin letra chica.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-faq reveal">
+  <div class="section-head" style="text-align:center">
+    <div class="eyebrow">Preguntas frecuentes</div>
+    <h2>Resolviendo tus dudas</h2>
+  </div>
+  <div class="faq-wrap">
+    <details class="faq-item"><summary>¿Necesito saber programar para trabajar contigo?</summary><div class="faq-item__content"><p>No. Cuéntanos qué necesitas y nosotros nos encargamos de construirlo — no requieres ningún conocimiento técnico.</p></div></details>
+    <details class="faq-item"><summary>¿Cuánto tiempo toma un proyecto?</summary><div class="faq-item__content"><p>Depende del alcance, pero la mayoría de proyectos se entregan en semanas, no meses, gracias a un proceso ágil y herramientas modernas de desarrollo.</p></div></details>
+    <details class="faq-item"><summary>¿Qué pasa si necesito cambios después de la entrega?</summary><div class="faq-item__content"><p>Podemos conversar ajustes puntuales o un plan de soporte continuo, según lo que necesites.</p></div></details>
+    <details class="faq-item"><summary>¿Es seguro y escalable lo que se construye?</summary><div class="faq-item__content"><p>Sí. Utilizamos plataformas y prácticas modernas pensadas para producción, con buen rendimiento y capacidad de crecer junto a tu negocio.</p></div></details>
+    <details class="faq-item"><summary>¿Cómo empezamos?</summary><div class="faq-item__content"><p>Escríbenos por WhatsApp o email contándonos tu idea, y te responderemos con los siguientes pasos.</p></div></details>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="section-contact reveal">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="eyebrow">Contacto</div>
+      <h2>Hablemos de<br>tu proyecto</h2>
+      <p>Cuéntanos qué necesitas y recibirás una propuesta clara — usualmente en menos de 24 horas.</p>
+      <a href="#" class="contact-link js-wa-link" target="_blank" rel="noopener">
+        <span class="contact-dot contact-dot--green"></span>
+        WhatsApp — <span class="js-wa-display">+51 924 423 629</span>
+      </a>
+      <a href="#" class="contact-link js-mail-link">
+        <span class="contact-dot contact-dot--blue"></span>
+        <span class="js-mail-display">hola@nocodecreatoria.com</span>
+      </a>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <input type="hidden" name="access_key" value="c0b410bf-a28e-4f6f-aa36-bbae5e3a9c30">
+      <input type="checkbox" name="botcheck" class="contact-form__botcheck" tabindex="-1" autocomplete="off">
+      <input type="text" name="name" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu email" required>
+      <textarea name="message" placeholder="Cuéntanos sobre tu proyecto..." rows="4" required></textarea>
+      <label class="contact-form__consent">
+        <input type="checkbox" required>
+        <span>Acepto que mis datos se usen solo para responder mi consulta, según la <a href="privacidad.html">Política de Privacidad</a>.</span>
+      </label>
+      <button type="submit">Enviar mensaje</button>
+      <p class="contact-form__success" id="contactSuccess" hidden>¡Gracias! Tu mensaje fue enviado — te responderemos pronto.</p>
+      <p class="contact-form__error" id="contactError" hidden>No pudimos enviar tu mensaje. Escríbenos directo por WhatsApp.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section-final reveal" id="final">
+  <div class="section-final__bg"></div>
+  <p class="final-eyebrow">Lima, Perú · Empieza hoy</p>
+  <h2 class="final-h2">Tu tiempo<br>vale demasiado.</h2>
+  <p class="final-sub">Cuéntanos tu idea. En 48 horas tienes una propuesta clara, un precio fijo, y un plan concreto.</p>
+  <a href="#" class="pill-btn js-wa-link" target="_blank" rel="noopener">
+    Cotiza por WhatsApp
+    <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__brand">
+    <img src="assets/logo-icon.png" alt="NoCode Creator" class="footer__logo">
+    <span>© 2026 NoCode Creator · Surco, Lima, Perú</span>
+  </div>
+  <nav class="footer__links">
+    <a href="privacidad.html">Política de Privacidad</a>
+    <a href="aviso-legal.html">Aviso Legal</a>
+  </nav>
+  <span>Tecnología que trabaja para ti.</span>
+</footer>
+
+<script>
+/* ── PARTICLE CANVAS ──────────────────────────── */
+(function(){
+  const c=document.getElementById('hero-canvas');
+  const ctx=c.getContext('2d');
+  let W,H,cx,cy,pts=[],mx=-9999,my=-9999;
+  const COLS=['#4285F4','#7B61FF','#06D6A0','#60A5FA','#A78BFA','#34D8F0','#818CF8'];
+  function r(a,b){return a+Math.random()*(b-a)}
+
+  function init(){
+    W=c.width=c.offsetWidth; H=c.height=c.offsetHeight;
+    cx=W/2; cy=H*0.38; pts=[];
+    const N=Math.min(560,Math.floor(W*0.38));
+    for(let i=0;i<N;i++){
+      const a=r(0,Math.PI*2), rad=Math.random()*Math.random()*270+8;
+      const ox=cx+Math.cos(a)*rad, oy=cy+Math.sin(a)*rad*0.52;
+      pts.push({x:ox,y:oy,ox,oy,vx:0,vy:0,
+        sz:r(0.3,2.2)*Math.random(),alpha:r(0.15,0.75),
+        col:COLS[Math.floor(Math.random()*COLS.length)],
+        ph:r(0,Math.PI*2),freq:r(0.0016,0.006),amp:r(8,34)});
+    }
+  }
+
+  function draw(){
+    requestAnimationFrame(draw);
+    ctx.clearRect(0,0,W,H);
+    for(const p of pts){
+      p.ph+=p.freq;
+      const tx=p.ox+Math.sin(p.ph)*p.amp, ty=p.oy+Math.cos(p.ph*.7)*p.amp*.5;
+      const dx=p.x-mx,dy=p.y-my,d2=dx*dx+dy*dy;
+      if(d2<22500){const d=Math.sqrt(d2),f=(150-d)/150*2.8;p.vx+=(dx/d)*f;p.vy+=(dy/d)*f}
+      p.vx+=(tx-p.x)*.024; p.vy+=(ty-p.y)*.024;
+      p.vx*=.87; p.vy*=.87; p.x+=p.vx; p.y+=p.vy;
+      ctx.save();ctx.globalAlpha=p.alpha;
+      ctx.shadowBlur=p.sz*7;ctx.shadowColor=p.col;
+      ctx.fillStyle=p.col;ctx.beginPath();ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+  c.addEventListener('mouseleave',()=>{mx=-9999;my=-9999});
+  window.addEventListener('resize',()=>{clearTimeout(window._rz);window._rz=setTimeout(init,120)});
+  init(); draw();
+})();
+
+/* ── NAV LIGHT ON SCROLL ──────────────────────── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('is-light',window.scrollY>window.innerHeight*.82);
+},{passive:true});
+
+/* ── MOBILE BURGER ────────────────────────────── */
+const burger=document.getElementById('navBurger');
+const mob=document.getElementById('navMobile');
+burger.addEventListener('click',()=>{
+  const open=mob.classList.toggle('open');
+  burger.setAttribute('aria-expanded',open);
+});
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
+
+/* ── REVEAL ON SCROLL ─────────────────────────── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ── VISUAL 1: task animation ─────────────────── */
+(function(){
+  let done=false;
+  const obs=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting&&!done){
+      done=true;
+      document.querySelectorAll('#v1w .v1-task').forEach(t=>{
+        setTimeout(()=>t.classList.add('done'),+t.dataset.delay+400);
+      });
+      let h=0; const target=12; const start=Date.now()+400;
+      const el=document.getElementById('v1h');
+      (function tick(){const e=Date.now()-start;h=Math.min(target,Math.floor(e/180));el.textContent=h+' h';if(h<target)requestAnimationFrame(tick)})();
+    }
+  },{threshold:.3});
+  const el=document.getElementById('f1'); if(el)obs.observe(el);
+})();
+
+/* ── VISUAL 2: count-up ────────────────────────── */
+(function(){
+  let done=false;
+  function cu(el,t,p,s,d){const st=Date.now();(function tk(){const pct=Math.min(1,(Date.now()-st)/d),e=1-Math.pow(1-pct,3);el.textContent=p+Math.floor(e*t)+s;if(pct<1)requestAnimationFrame(tk)})()}
+  const obs=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting&&!done){done=true;
+      cu(document.getElementById('v2a'),14200,'S/ ','',1400);
+      cu(document.getElementById('v2b'),342,'','',1200);
+      cu(document.getElementById('v2c'),89,'','',1100);
+      cu(document.getElementById('v2d'),23,'','%',1300);
+    }
+  },{threshold:.3});
+  const el=document.getElementById('f2'); if(el)obs.observe(el);
+})();
+
+/* ── VISUAL 3: chat ────────────────────────────── */
+(function(){
+  let done=false;
+  const obs=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting&&!done){done=true;
+      document.querySelectorAll('#v3w .v3-bubble').forEach(b=>{
+        setTimeout(()=>b.classList.add('show'),+b.dataset.delay+200);
+      });
+    }
+  },{threshold:.3});
+  const el=document.getElementById('f3'); if(el)obs.observe(el);
+})();
+
+/* ── VISUAL 4: timeline ────────────────────────── */
+(function(){
+  let done=false;
+  const obs=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting&&!done){done=true;
+      document.querySelectorAll('#v4w .v4-step').forEach(s=>{
+        setTimeout(()=>{s.classList.add('done');setTimeout(()=>{const b=s.querySelector('.v4-bar');if(b)b.style.width='100%'},50)},+s.dataset.delay+300);
+      });
+    }
+  },{threshold:.3});
+  const el=document.getElementById('f4'); if(el)obs.observe(el);
+})();
+</script>
 
 <script src="js/main.js"></script>
 
-<!-- Schema.org: Local Business + Professional Service -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -486,35 +1054,7 @@
     "addressLocality": "Lima",
     "addressRegion": "Lima",
     "addressCountry": "PE"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": -12.1442,
-    "longitude": -76.9920
-  },
-  "areaServed": [
-    { "@type": "City", "name": "Lima" },
-    { "@type": "Country", "name": "Perú" }
-  ],
-  "serviceType": [
-    "Desarrollo web",
-    "Aplicaciones web a medida",
-    "Landing pages",
-    "Tiendas online",
-    "Automatizaciones",
-    "MVPs para startups",
-    "Agentes de inteligencia artificial"
-  ],
-  "priceRange": "S/. 800 – S/. 8,000+",
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens": "09:00",
-    "closes": "18:00"
-  },
-  "sameAs": [
-    "https://wa.me/51924423629"
-  ]
+  }
 }
 </script>
 </body>
